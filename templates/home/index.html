@@ -1,262 +1,212 @@
+{% extends "home/base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="zxx">
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="DJoz Template">
-    <meta name="keywords" content="DJoz, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>The Literario ❤️</title>
+{% block home_active %} active {% endblock %}
 
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+{% block content %}
 
-    <link rel="stylesheet" href="{% static 'css/home/bootstrap.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/home/font-awesome.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/home/barfiller.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/home/nowfont.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/home/rockville.css' %}" type="text/css">    
-    <link rel="stylesheet" href="{% static 'css/home/magnific-popup.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/home/owl.carousel.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/home/slicknav.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/home/style.css' %}" type="text/css">
-</head>
 
-<body>
-    <!-- Page Preloder -->
-    <!-- <div id="preloder">
-        <div class="loader"></div>
-    </div> -->
+<!-- Hero Section Begin -->
+<section class="hero spad set-bg" data-setbg="{% static 'img/home/lit/back2.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hero__text">
+                    <span>Welcome to</span>
+                    <h1>Club Literario</h1>
+                    <p>The Literary Club aims at fostering a love for books and literature in students,<br /> and
+                        promoting literary activities.</p>
+                    <a href="https://www.youtube.com/watch?v=K4DyBUG242c" class="play-btn video-popup"><i
+                            class="fa fa-play"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="linear__icon">
+        <i class="fa fa-angle-double-down"></i>
+    </div>
+</section>
+<!-- Hero Section End -->
 
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-2">
-                    <div class="header__logo">
-                        <a href="/"><img src="{% static 'img/home/literario.png' %}" width="100%" alt=""></a>
+<!-- Event Section Begin -->
+<section class="event spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Upcoming Pre-BLF Events</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="event__slider owl-carousel">
+                <div class="col-lg-4">
+                    <div class="event__item">
+                        <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/th.jpg' %}">
+                            <div class="tag-date">
+                                <span>Soon...</span>
+                            </div>
+                        </div>
+                        <div class="event__item__text">
+                            <h4>Treasure Hunt</h4>
+                            <p><i class="fa fa-map-marker"></i> KC Ground </p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-10 col-md-10">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul style="margin-top: 2%;">
-                                <li class="active"><a href="/">Home</a></li>
-                                <li><a href="#">About</a></li>
-                                <!-- <li><a href="discography.html">Discography</a></li> -->
-                                <li><a href="#">events</a></li>
-                                <li><a href="#">Videos</a></li>
-                                <!-- <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li> -->
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </nav>
-                        <div class="header__right__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                <div class="col-lg-4">
+                    <div class="event__item">
+                        <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/talk.jpg' %}">
+                            <div class="tag-date">
+                                <span>Soon...</span>
+                            </div>
+                        </div>
+                        <div class="event__item__text">
+                            <h4>Talk Show</h4>
+                            <p><i class="fa fa-map-marker"></i> EC Conference Hall</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="event__item">
+                        <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/india.jpg' %}">
+                            <div class="tag-date">
+                                <span>Soon...</span>
+                            </div>
+                        </div>
+                        <div class="event__item__text">
+                            <h4>Incredible India</h4>
+                            <p><i class="fa fa-map-marker">EC Conference Hall</i></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="event__item">
+                        <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/radio.jpg' %}">
+                            <div class="tag-date">
+                                <span>Soon...</span>
+                            </div>
+                        </div>
+                        <div class="event__item__text">
+                            <h4>Radio Jockey Competition</h4>
+                            <p><i class="fa fa-map-marker"></i> EC Conference Hall</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="mobile-menu-wrap"></div>
         </div>
-    </header>
-    <!-- Header Section End -->
+    </div>
+</section>
+<!-- Event Section End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero spad set-bg" data-setbg="{% static 'img/home/lit/back2.jpg' %}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="hero__text">
-                        <span>Welcome to</span>
-                        <h1>Club Literario</h1>
-                        <p>The Literary Club aims at fostering a love for books and literature in students,<br /> and promoting literary activities.</p>
-                        <a href="https://www.youtube.com/watch?v=K4DyBUG242c" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                    </div>
+<!-- About Section Begin -->
+<section class="about spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about__pic">
+                    <img src="{% static 'img/home/about/about.png' %}" alt="">
                 </div>
             </div>
-        </div>
-        <div class="linear__icon">
-            <i class="fa fa-angle-double-down"></i>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-
-    <!-- Event Section Begin -->
-    <section class="event spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="col-lg-6">
+                <div class="about__text">
                     <div class="section-title">
-                        <h2>Upcoming Pre-BLF Events</h2>
+                        <h2>Our Dignitaries</h2>
+                        <h1>About me</h1>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="event__slider owl-carousel">
-                    <div class="col-lg-4">
-                        <div class="event__item">
-                            <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/th.jpg' %}">
-                                <div class="tag-date">
-                                    <span>Soon...</span>
-                                </div>
-                            </div>
-                            <div class="event__item__text">
-                                <h4>Treasure Hunt</h4>
-                                <p><i class="fa fa-map-marker"></i> KC Ground </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="event__item">
-                            <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/talk.jpg' %}">
-                                <div class="tag-date">
-                                    <span>Soon...</span>
-                                </div>
-                            </div>
-                            <div class="event__item__text">
-                                <h4>Talk Show</h4>
-                                <p><i class="fa fa-map-marker"></i> EC Conference Hall</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="event__item">
-                            <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/india.jpg' %}">
-                                <div class="tag-date">
-                                    <span>Soon...</span>
-                                </div>
-                            </div>
-                            <div class="event__item__text">
-                                <h4>Incredible India</h4>
-                                <p><i class="fa fa-map-marker">EC Conference Hall</i></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="event__item">
-                            <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/radio.jpg' %}">
-                                <div class="tag-date">
-                                    <span>Soon...</span>
-                                </div>
-                            </div>
-                            <div class="event__item__text">
-                                <h4>Radio Jockey Competition</h4>
-                                <p><i class="fa fa-map-marker"></i> EC Conference Hall</p>
-                            </div>
-                        </div>
-                    </div>
+                    <p>Discover the driving forces behind Club Literario in "Our Dignitaries". Meet our
+                        President(Mr. Priyanshu Rai), Vice-President(Miss. Aishwant Saini), and General
+                        Secratory(Miss. Sambhavi Mishra), the passionate minds shaping our literary haven. Each
+                        contributing to our vibrant literary community. Welcome to the heart of Club Literario,
+                        where words come to life.</p>
+                    <a href="#" class="primary-btn">CONTACT US!</a>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Event Section End -->
+    </div>
+</section>
+<!-- About Section End -->
 
-    <!-- About Section Begin -->
-    <section class="about spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about__pic">
-                        <img src="{% static 'img/home/about/about.png' %}" alt="">
-                    </div>
+<!-- Services Section Begin -->
+<section class="services">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                <div class="services__left set-bg" data-setbg="{% static 'img/home/lit/6.jpg' %}">
+                    <a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" class="play-btn video-popup"><i
+                            class="fa fa-play"></i></a>
                 </div>
-                <div class="col-lg-6">
-                    <div class="about__text">
-                        <div class="section-title">
-                            <h2>Our Dignitaries</h2>
-                            <h1>About me</h1>
+            </div>
+            <div class="col-lg-6 p-0">
+                <div class="row services__list">
+                    <div class="col-lg-6 p-0 order-lg-1 col-md-6 order-md-1">
+                        <div class="service__item deep-bg">
+                            <img src="{% static 'img/home/services/service-1.png' %}" alt="">
+                            <h4>Literary Exploration</h4>
+                            <p>Foster a love for literature by providing a platform for members to explore diverse
+                                genres, authors, and literary works.</p>
                         </div>
-                        <p>Discover the driving forces behind Club Literario in  "Our Dignitaries". Meet our President(Mr. Priyanshu Rai), Vice-President(Miss. Aishwant Saini), and General Secratory(Miss. Sambhavi Mishra), the passionate minds shaping our literary haven. Each contributing to our vibrant literary community. Welcome to the heart of Club Literario, where words come to life.</p>
-                        <a href="#" class="primary-btn">CONTACT US!</a>
+                    </div>
+                    <div class="col-lg-6 p-0 order-lg-2 col-md-6 order-md-2">
+                        <div class="service__item">
+                            <img src="{% static 'img/home/services/service-2.png' %}" alt="">
+                            <h4>Collaborations</h4>
+                            <p>Build a supportive and inclusive community where members can connect over their
+                                shared passion for literature.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-0 order-lg-4 col-md-6 order-md-4">
+                        <div class="service__item deep-bg">
+                            <img src="{% static 'img/home/services/service-4.png' %}" alt="">
+                            <h4>Creative Expression</h4>
+                            <p>Host writing workshops, open mic nights, or collaborative projects to inspire and
+                                showcase the diverse talents within the club.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-0 order-lg-3 col-md-6 order-md-3">
+                        <div class="service__item">
+                            <img src="{% static 'img/home/services/service-3.png' %}" alt="">
+                            <h4>Educational Initiatives</h4>
+                            <p>Provide educational opportunities related to literature, such as author talks,
+                                seminars, or visits to literary events.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- About Section End -->
+    </div>
+</section><br><br><br>
+<!-- Club Mentors -->
+<section class="about spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about__pic">
+                    <img src="{% static 'img/home/about/about.png' %}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about__text">
+                    <div class="section-title">
+                        <h2>Our Club Mentors</h2>
+                        <h1>About me</h1>
+                    </div>
+                    <p>Mrs. Mamta Bhatnagar Ma'am and Mr. Rohan Prakash Sir, distinguished mentors, illuminate the
+                        path of literary exploration within Club Literario. Mamta ma'am, with her profound knowledge
+                        and nurturing spirit, inspires members to delve into the intricacies of language and
+                        self-expression. Rohan sir, known for his dynamic approach and infectious enthusiasm,
+                        infuses the club with energy. Together, They play pivotal roles in guiding Club Literario
+                        towards a richer understanding of literature and transformative force for its members.</p>
+                    <a href="#" class="primary-btn">CONTACT US!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Club Mentors -->
+<!-- Services Section End -->
 
-    <!-- Services Section Begin -->
-    <section class="services">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 p-0">
-                    <div class="services__left set-bg" data-setbg="{% static 'img/home/lit/6.jpg' %}">
-                        <a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 p-0">
-                    <div class="row services__list">
-                        <div class="col-lg-6 p-0 order-lg-1 col-md-6 order-md-1">
-                            <div class="service__item deep-bg">
-                                <img src="{% static 'img/home/services/service-1.png' %}" alt="">
-                                <h4>Literary Exploration</h4>
-                                <p>Foster a love for literature by providing a platform for members to explore diverse genres, authors, and literary works.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 p-0 order-lg-2 col-md-6 order-md-2">
-                            <div class="service__item">
-                                <img src="{% static 'img/home/services/service-2.png' %}" alt="">
-                                <h4>Collaborations</h4>
-                                <p>Build a supportive and inclusive community where members can connect over their shared passion for literature.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 p-0 order-lg-4 col-md-6 order-md-4">
-                            <div class="service__item deep-bg">
-                                <img src="{% static 'img/home/services/service-4.png' %}" alt="">
-                                <h4>Creative Expression</h4>
-                                <p>Host writing workshops, open mic nights, or collaborative projects to inspire and showcase the diverse talents within the club.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 p-0 order-lg-3 col-md-6 order-md-3">
-                            <div class="service__item">
-                                <img src="{% static 'img/home/services/service-3.png' %}" alt="">
-                                <h4>Educational Initiatives</h4>
-                                <p>Provide educational opportunities related to literature, such as author talks, seminars, or visits to literary events.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><br><br><br>
-    <!-- Club Mentors -->
-    <section class="about spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about__pic">
-                        <img src="{% static 'img/home/about/about.png' %}" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about__text">
-                        <div class="section-title">
-                            <h2>Our Club Mentors</h2>
-                            <h1>About me</h1>
-                        </div>
-                        <p>Mrs. Mamta Bhatnagar Ma'am and Mr. Rohan Prakash Sir, distinguished mentors, illuminate the path of literary exploration within Club Literario. Mamta ma'am, with her profound knowledge and nurturing spirit, inspires members to delve into the intricacies of language and self-expression. Rohan sir, known for his dynamic approach and infectious enthusiasm, infuses the club with energy. Together, They play pivotal roles in guiding Club Literario towards a richer understanding of literature and transformative force for its members.</p>
-                        <a href="#" class="primary-btn">CONTACT US!</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Club Mentors -->
-    <!-- Services Section End -->
-
-    <!-- Track Section Begin -->
-    <!-- <section class="track spad">
+<!-- Track Section Begin -->
+<!-- <section class="track spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
@@ -281,11 +231,11 @@
                             <div class="jp-audio jp_container_1" role="application" aria-label="media player">
                                 <div class="jp-gui jp-interface">
                                     <!-- Player Controls -->
-                                    <!-- <div class="player_controls_box">
+<!-- <div class="player_controls_box">
                                         <button class="jp-play player_button" tabindex="0"></button>
                                     </div> -->
-                                    <!-- Progress Bar -->
-                                    <!-- <div class="player_bars">
+<!-- Progress Bar -->
+<!-- <div class="player_bars">
                                         <div class="jp-progress">
                                             <div class="jp-seek-bar">
                                                 <div>
@@ -298,8 +248,8 @@
                                         </div>
                                         <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
                                     </div> -->
-                                    <!-- Volume Controls -->
-                                    <!-- <div class="jp-volume-controls">
+<!-- Volume Controls -->
+<!-- <div class="jp-volume-controls">
                                         <button class="jp-mute" tabindex="0"><i
                                                 class="fa fa-volume-down"></i></button>
                                         <div class="jp-volume-bar">
@@ -315,14 +265,14 @@
                                 data-url="music-files/2.mp3"></div>
                             <div class="jp-audio jp_container_2" role="application" aria-label="media player">
                                 <div class="jp-gui jp-interface"> -->
-                                    <!-- Player Controls -->
-                                    <!-- <div class="player_controls_box">
+<!-- Player Controls -->
+<!-- <div class="player_controls_box">
                                         <button class="jp-play player_button" tabindex="0"></button>
                                     </div> -->
-                                    <!-- Progress Bar -->
-                                    
-                                    <!-- Volume Controls -->
-                                    <!-- <div class="jp-volume-controls">
+<!-- Progress Bar -->
+
+<!-- Volume Controls -->
+<!-- <div class="jp-volume-controls">
                                         <button class="jp-mute" tabindex="0"><i
                                                 class="fa fa-volume-down"></i></button>
                                         <div class="jp-volume-bar">
@@ -338,12 +288,12 @@
                                 data-url="music-files/3.mp3"></div>
                             <div class="jp-audio jp_container_3" role="application" aria-label="media player">
                                 <div class="jp-gui jp-interface"> -->
-                                    <!-- Player Controls -->
-                                    <!-- <div class="player_controls_box">
+<!-- Player Controls -->
+<!-- <div class="player_controls_box">
                                         <button class="jp-play player_button" tabindex="0"></button>
                                     </div> -->
-                                    <!-- Progress Bar -->
-                                    <!-- <div class="player_bars">
+<!-- Progress Bar -->
+<!-- <div class="player_bars">
                                         <div class="jp-progress">
                                             <div class="jp-seek-bar">
                                                 <div>
@@ -356,8 +306,8 @@
                                         </div>
                                         <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
                                     </div> -->
-                                    <!-- Volume Controls -->
-                                    <!-- <div class="jp-volume-controls">
+<!-- Volume Controls -->
+<!-- <div class="jp-volume-controls">
                                         <button class="jp-mute" tabindex="0"><i
                                                 class="fa fa-volume-down"></i></button>
                                         <div class="jp-volume-bar">
@@ -373,12 +323,12 @@
                                 data-url="music-files/4.mp3"></div>
                             <div class="jp-audio jp_container_4" role="application" aria-label="media player">
                                 <div class="jp-gui jp-interface"> -->
-                                    <!-- Player Controls -->
-                                    <!-- <div class="player_controls_box">
+<!-- Player Controls -->
+<!-- <div class="player_controls_box">
                                         <button class="jp-play player_button" tabindex="0"></button>
                                     </div> -->
-                                    <!-- Progress Bar -->
-                                    <!-- <div class="player_bars">
+<!-- Progress Bar -->
+<!-- <div class="player_bars">
                                         <div class="jp-progress">
                                             <div class="jp-seek-bar">
                                                 <div>
@@ -391,8 +341,8 @@
                                         </div>
                                         <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
                                     </div> -->
-                                    <!-- Volume Controls -->
-                                    <!-- <div class="jp-volume-controls">
+<!-- Volume Controls -->
+<!-- <div class="jp-volume-controls">
                                         <button class="jp-mute" tabindex="0"><i
                                                 class="fa fa-volume-down"></i></button>
                                         <div class="jp-volume-bar">
@@ -408,12 +358,12 @@
                                 data-url="music-files/5.mp3"></div>
                             <div class="jp-audio jp_container_5" role="application" aria-label="media player">
                                 <div class="jp-gui jp-interface"> -->
-                                    <!-- Player Controls -->
-                                    <!-- <div class="player_controls_box">
+<!-- Player Controls -->
+<!-- <div class="player_controls_box">
                                         <button class="jp-play player_button" tabindex="0"></button>
                                     </div> -->
-                                    <!-- Progress Bar -->
-                                    <!-- <div class="player_bars">
+<!-- Progress Bar -->
+<!-- <div class="player_bars">
                                         <div class="jp-progress">
                                             <div class="jp-seek-bar">
                                                 <div>
@@ -426,8 +376,8 @@
                                         </div>
                                         <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
                                     </div> -->
-                                    <!-- Volume Controls -->
-                                    <!-- <div class="jp-volume-controls">
+<!-- Volume Controls -->
+<!-- <div class="jp-volume-controls">
                                         <button class="jp-mute" tabindex="0"><i
                                                 class="fa fa-volume-down"></i></button>
                                         <div class="jp-volume-bar">
@@ -443,12 +393,12 @@
                                 data-url="music-files/6.mp3"></div>
                             <div class="jp-audio jp_container_6" role="application" aria-label="media player">
                                 <div class="jp-gui jp-interface"> -->
-                                    <!-- Player Controls -->
-                                    <!-- <div class="player_controls_box">
+<!-- Player Controls -->
+<!-- <div class="player_controls_box">
                                         <button class="jp-play player_button" tabindex="0"></button>
                                     </div> -->
-                                    <!-- Progress Bar -->
-                                    <!-- <div class="player_bars">
+<!-- Progress Bar -->
+<!-- <div class="player_bars">
                                         <div class="jp-progress">
                                             <div class="jp-seek-bar">
                                                 <div>
@@ -461,8 +411,8 @@
                                         </div>
                                         <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
                                     </div> -->
-                                    <!-- Volume Controls -->
-                                    <!-- <div class="jp-volume-controls">
+<!-- Volume Controls -->
+<!-- <div class="jp-volume-controls">
                                         <button class="jp-mute" tabindex="0"><i
                                                 class="fa fa-volume-down"></i></button>
                                         <div class="jp-volume-bar">
@@ -482,156 +432,92 @@
             </div>
         </div>
     </section>  -->
-    <!-- Track Section End -->
+<!-- Track Section End -->
 
-    <!-- Youtube Section Begin -->
-    <section class="youtube spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Youtube feed</h2>
-                        <h1>Latest videos</h1>
+<!-- Youtube Section Begin -->
+<section class="youtube spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Youtube feed</h2>
+                    <h1>Latest videos</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="youtube__item">
+                    <div class="youtube__item__pic set-bg" data-setbg="{% static 'img/home/lit/12.jpg' %}">
+                        <a href="https://www.youtube.com/watch?v=yJg-Y5byMMw?autoplay=1" class="play-btn video-popup"><i
+                                class="fa fa-play"></i></a>
+                    </div>
+                    <div class="youtube__item__text">
+                        <h4>Brij Literature Fest 2k23</h4>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="youtube__item">
-                        <div class="youtube__item__pic set-bg" data-setbg="{% static 'img/home/lit/12.jpg' %}">
-                            <a href="https://www.youtube.com/watch?v=yJg-Y5byMMw?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                        </div>
-                        <div class="youtube__item__text">
-                            <h4>Brij Literature Fest 2k23</h4>
-                        </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="youtube__item">
+                    <div class="youtube__item__pic set-bg" data-setbg="{% static 'img/home/lit/7.jpg' %}">
+                        <a href="https://www.youtube.com/watch?v=K4DyBUG242c?autoplay=1" class="play-btn video-popup"><i
+                                class="fa fa-play"></i></a>
+                    </div>
+                    <div class="youtube__item__text">
+                        <h4>Brij Literature Fest 2k22</h4>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="youtube__item">
-                        <div class="youtube__item__pic set-bg" data-setbg="{% static 'img/home/lit/7.jpg' %}">
-                            <a href="https://www.youtube.com/watch?v=K4DyBUG242c?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                        </div>
-                        <div class="youtube__item__text">
-                            <h4>Brij Literature Fest 2k22</h4>
-                        </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="youtube__item">
+                    <div class="youtube__item__pic set-bg" data-setbg="{% static 'img/home/lit/10.jpg' %}">
+                        <a href="https://www.youtube.com/watch?v=S19UcWdOA-I?autoplay=1" class="play-btn video-popup"><i
+                                class="fa fa-play"></i></a>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="youtube__item">
-                        <div class="youtube__item__pic set-bg" data-setbg="{% static 'img/home/lit/10.jpg' %}">
-                            <a href="https://www.youtube.com/watch?v=S19UcWdOA-I?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                        </div>
-                        <div class="youtube__item__text">
-                            <h4>Brij Literature Fest 2k21.</h4>
-                        </div>
+                    <div class="youtube__item__text">
+                        <h4>Brij Literature Fest 2k21.</h4>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Youtube Section End -->
+    </div>
+</section>
+<!-- Youtube Section End -->
 
-    <!-- Countdown Section Begin -->
-    <section class="countdown spad set-bg" data-setbg="{% static 'img/home/lit/9.jpg' %}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="countdown__text">
-                        <h1>Pre - BLF 2K23</h1>
-                        <h4>Most awaiting fest start in</h4>
+<!-- Countdown Section Begin -->
+<section class="countdown spad set-bg" data-setbg="{% static 'img/home/lit/9.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="countdown__text">
+                    <h1>Pre - BLF 2K23</h1>
+                    <h4>Most awaiting fest start in</h4>
+                </div>
+                <div class="countdown__timer" id="countdown-time">
+                    <div class="countdown__item">
+                        <span>20</span>
+                        <p>days</p>
                     </div>
-                    <div class="countdown__timer" id="countdown-time">
-                        <div class="countdown__item">
-                            <span>20</span>
-                            <p>days</p>
-                        </div>
-                        <div class="countdown__item">
-                            <span>45</span>
-                            <p>hours</p>
-                        </div>
-                        <div class="countdown__item">
-                            <span>18</span>
-                            <p>minutes</p>
-                        </div>
-                        <div class="countdown__item">
-                            <span>09</span>
-                            <p>seconds</p>
-                        </div>
+                    <div class="countdown__item">
+                        <span>45</span>
+                        <p>hours</p>
                     </div>
-                    <div class="buy__tickets">
-                        <a href="#" class="primary-btn">Buy tickets</a>
+                    <div class="countdown__item">
+                        <span>18</span>
+                        <p>minutes</p>
                     </div>
+                    <div class="countdown__item">
+                        <span>09</span>
+                        <p>seconds</p>
+                    </div>
+                </div>
+                <div class="buy__tickets">
+                    <a href="#" class="primary-btn">Buy tickets</a>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Countdown Section End -->
+    </div>
+</section>
+<!-- Countdown Section End -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer spad set-bg" data-setbg="{% static 'img/home/footer-bg.png' %}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer__address">
-                        <ul>
-                            <li>
-                                <i class="fa fa-phone"></i>
-                                <p>Phone</p>
-                                <h6>+91 8218113050</h6>
-                            </li>
-                            <li>
-                                <i class="fa fa-envelope"></i>
-                                <p>Email</p>
-                                <h6>literariodata@gmail.com</h6>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 offset-lg-1 col-md-6">
-                    <div class="footer__social">
-                        <h2>The Literario</h2>
-                        <div class="footer__social__links">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 offset-lg-1 col-md-6">
-                    <div class="footer__newslatter">
-                        <h4>Stay With us!</h4>
-                        <form action="#">
-                            <input type="text" placeholder="Email">
-                            <button type="submit"><i class="fa fa-send-o"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-			<div class="footer__copyright__text">
-				<p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart" aria-hidden="true"></i></p>
-			</div>
-			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </div>
-    </footer>
-    <!-- Footer Section End -->
-
-    <!-- Js Plugins -->
-    <script src="{% static 'js/home/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'js/home/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/home/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'js/home/jquery.nicescroll.min.js' %}"></script>
-    <script src="{% static 'js/home/jquery.barfiller.js' %}"></script>
-    <script src="{% static 'js/home/jquery.countdown.min.js' %}"></script>
-    <script src="{% static 'js/home/jquery.slicknav.js' %}"></script>
-    <script src="{% static 'js/home/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'js/home/main.js' %}"></script>
-
-    <!-- Music Plugin -->
-    <script src="{% static 'js/home/jquery.jplayer.min.js' %}"></script>
-    <script src="{% static 'js/home/jplayerInit.js' %}"></script>
-</body>
-
-
-</html>
+{% endblock %}

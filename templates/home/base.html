@@ -1,0 +1,155 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="DJoz Template">
+    <meta name="keywords" content="DJoz, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Literario ❤️</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/home/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/home/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/home/barfiller.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/home/nowfont.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/home/rockville.css' %}" type="text/css">    
+    <link rel="stylesheet" href="{% static 'css/home/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/home/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/home/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/home/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <!-- <div id="preloder">
+        <div class="loader"></div>
+    </div> -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="header__logo">
+                        <a href="{% url 'home' %}"><img src="{% static 'img/home/literario.png' %}" width="100%" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul style="margin-top: 2%;">
+
+
+                                <li class="{% block home_active %} {% endblock %}"><a href="{% url 'home' %}">Home</a></li>
+                                <li class="{% block about_active %} {% endblock %}"><a href="{% url 'about' %}">About</a></li>
+                                <li class="{% block events_active %} {% endblock %}"><a href="{% url 'events' %}">events</a></li>
+                                <li class="{% block videos_active %} {% endblock %}"><a href="{% url 'videos' %}">Videos</a></li>
+                                <li class="{% block contact_active %} {% endblock %}"><a href="{% url 'contact' %}">Contact</a></li>
+                                
+                                
+                                <li><a href="{% url 'login' %}">Login</a></li>
+
+
+                                <!-- <li><a href="discography.html">Discography</a></li> -->
+                                <!-- <li><a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                    </ul>
+                                </li> -->
+                            </ul>
+                        </nav>
+                        <div class="header__right__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+
+    {% block content %}
+    {% endblock %}
+
+
+    
+    <!-- Footer Section Begin -->
+    <footer class="footer spad set-bg" data-setbg="{% static 'img/home/footer-bg.png' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer__address">
+                        <ul>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                <p>Phone</p>
+                                <h6>+91 8218113050</h6>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                <p>Email</p>
+                                <h6>literariodata@gmail.com</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1 col-md-6">
+                    <div class="footer__social">
+                        <h2>The Literario</h2>
+                        <div class="footer__social__links">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6">
+                    <div class="footer__newslatter">
+                        <h4>Stay With us!</h4>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit"><i class="fa fa-send-o"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			<div class="footer__copyright__text">
+				<p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart" aria-hidden="true"></i></p>
+			</div>
+			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'js/home/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/home/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/home/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/home/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'js/home/jquery.barfiller.js' %}"></script>
+    <script src="{% static 'js/home/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/home/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/home/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/home/main.js' %}"></script>
+
+    <!-- Music Plugin -->
+    <script src="{% static 'js/home/jquery.jplayer.min.js' %}"></script>
+    <script src="{% static 'js/home/jplayerInit.js' %}"></script>
+</body>
+
+
+</html>
