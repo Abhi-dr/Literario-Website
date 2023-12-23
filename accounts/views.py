@@ -23,15 +23,19 @@ def register(request):
 
         return redirect('login')
     return render(request, 'accounts/register.html')
+
+
 def login(request):
     if request.method=='POST':
-        email=request.POST.get('email')
-        p_word=request.POST.get('pwd')
+        username=request.POST.get('username')
+        password=request.POST.get('password')
 
-        user=auth.authenticate(email=email,password=p_word)
+        user=auth.authenticate(username=username,password=password)
+        
         if user is not None:
             auth.login(request,user)
-            return redirect('index')
+            return redirect('council')
+        
         else:
-            return redirect('login')
+            return redirect('login')        
     return render(request,'accounts/login.html') 
