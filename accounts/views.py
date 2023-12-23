@@ -22,7 +22,7 @@ def register(request):
         send_mail(subject, message, from_email, recipient_list, fail_silently=False)
 
         return redirect('login')
-    return render(request, 'home/index.html')
+    return render(request, 'accounts/register.html')
 def login(request):
     if request.method=='POST':
         email=request.POST.get('email')
@@ -34,4 +34,4 @@ def login(request):
             return redirect('index')
         else:
             return redirect('login')
-    return render(request,'home/index.html') 
+    return render(request,'accounts/login.html') 
