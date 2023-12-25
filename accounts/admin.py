@@ -6,3 +6,4 @@ from .models import Profile
 class ProfileAdmin(admin.ModelAdmin):
     exclude = ("last_login", "password",  "date_joined", "is_active", "user_permissions", "groups")
     list_display = ("username", "first_name", "last_name", "team", "post")
+    readonly_fields = ("referral_code", )

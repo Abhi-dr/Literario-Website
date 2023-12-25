@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
     'council.apps.CouncilConfig',
+    'events.apps.EventsConfig',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,10 @@ EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+# ============================ MESSAGE TAGS ============================
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'green',
+    messages.ERROR: 'red',
+}

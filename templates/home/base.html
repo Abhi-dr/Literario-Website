@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{% static 'css/home/owl.carousel.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/home/slicknav.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/home/style.css' %}" type="text/css">
+
+    {% block css %}{% endblock %}
+
 </head>
 
 <body>
@@ -36,14 +39,15 @@
             <div class="row">
                 <div class="col-lg-2 col-md-2">
                     <div class="header__logo">
-                        <a href="{% url 'home' %}"><img src="{% static 'img/home/literario.png' %}" width="100%" alt=""></a>
+                        <a href="{% url 'home' %}"><img src="{% static 'img/home/literario.png' %}" width="50%" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-10">
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
-                            <ul style="margin-top: 2%;">
+                            <ul>
 
+                                <li><a class="btn btn-outline-warning px-4 p-2 font-weight-bold" style="color: rgb(255, 201, 102);" href="{% url 'registration' %}">B O O K &nbsp;&nbsp; T I C K E T S !</a></li>
 
                                 <li class="{% block home_active %} {% endblock %}"><a href="{% url 'home' %}">Home</a></li>
                                 <li class="{% block about_active %} {% endblock %}"><a href="{% url 'about' %}">About</a></li>
@@ -52,7 +56,8 @@
                                 <li class="{% block contact_active %} {% endblock %}"><a href="{% url 'contact' %}">Contact</a></li>
                                 
                                 
-                                <li><a href="{% url 'login' %}">Login</a></li>
+
+                                <li><a class="btn btn-outline-warning p-2 font-weight-bold" href="{% url 'login' %}">Login</a></li>
 
 
                                 <!-- <li><a href="discography.html">Discography</a></li> -->
@@ -65,12 +70,12 @@
                                 </li> -->
                             </ul>
                         </nav>
-                        <div class="header__right__social">
+                        <!-- <div class="header__right__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
                             <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

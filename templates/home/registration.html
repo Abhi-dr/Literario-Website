@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add this line for the Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <title>Event Registration Form</title>
+
+    <style>
+        body {
+            background-image: url("https://c4.wallpaperflare.com/wallpaper/976/206/336/abstract-black-gradient-minimalistic-wallpaper-preview.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+
+
+        }
+
+        .bold-option {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% for message in messages %}
+
+    <div class="bg-{{message.tags}}-100 border border-green-200 text-{{message.tags}}-800 px-4 py-3 m-10 rounded relative"
+        role="alert">
+        <strong class="font-bold">{{ message }}</strong>
+    </div>
+
+    {% endfor %}
+
+    <div class="w-full max-w-xl mx-auto p-6 rounded-xl shadow-md mt-20" style="background-color: rgb(219 234 254);">
+
+
+        <h2 class="text-2xl font-bold mb-4">Registration Form</h2>
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-bold mb-2">Full Name:</label>
+                <input type="text" id="name" name="name" required
+                    class="appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+
+            <div class="mb-4">
+                <label for="course" class="block text-gray-700 font-bold mb-2">Course:</label>
+                <select id="course" name="course" required
+                    class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                    <option selected value="B.Tech">B.Tech</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BBA">BBA</option>
+                    <option value="MCA">MCA</option>
+                    <option value="MBA">MBA</option>
+                    <option value="BA">BA</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="year" class="block text-gray-700 font-bold mb-2">Year Of Study:</label>
+                <select id="year" name="year" required
+                    class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                    <option selected value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="universityMailId" class="block text-gray-700 font-bold mb-2">University Mail ID:</label>
+                <input type="email" id="universityMailId" name="email" required
+                    class="appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+
+            <div class="mb-4">
+                <label for="event" class="block text-gray-700 font-bold mb-2">Choose Event(s):</label>
+                <select id="event" name="event"
+                    class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+
+                    {% for event in events %}
+
+                    <option value="{{ event.id }}">{{ event.name }} - ₹{{ event.ticket_price }}</option>
+
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="referenceName" class="block text-gray-700 font-bold mb-2">Reference: <small>(optional)
+                    </small> </label>
+                <select id="referenceName" name="referral_code"
+                    class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                    <option value="" selected disabled hidden>--Select--</option>
+
+                    {% for referral in referrals %}
+                    <option value="{{ referral.referral_code }}">
+                        {{ referral.first_name }} {{ referral.last_name }} (Lit-{{referral.referral_code}})
+                    </option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+            <!-- <div class="relative">
+                <label for="screenshot" class="block text-gray-700 font-bold mb-2">Upload Payment Screenshot:</label>
+                <button
+                    class="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 transition duration-200 w-full">
+                    Upload Screenshot
+                </button>
+                <input type="file" id="screenshot" name="screenshot" required
+                    class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
+            </div> -->
+
+            <div class="mt-8 text-right">
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Book Your Ticket Now!
+                </button>
+            </div>
+
+        </form>
+    </div>
+    <br><br><br>
+
+
+</body>
+
+</html>

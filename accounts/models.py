@@ -54,6 +54,8 @@ class Profile(User):
     post = models.CharField(max_length=20, choices=POST_CHOICES, default='Member')
     gender = models.CharField(choices = GENDER_CHOICES, default = "Male", max_length=10)
     mobile_number = models.IntegerField()
+    
+    referral_code = models.CharField(max_length=20, blank=True, null=True)
 
     profile_pic = models.FileField(upload_to="images", blank=True, null=True)
     
@@ -65,6 +67,10 @@ class Profile(User):
             self.is_staff = False
             self.set_password('iloveliterario')
         super().save(*args, **kwargs)
+                
+        if not self.referral_code:
+            self.referral_code = self.first_name[:4].lower() + str(self.mobile_number)[-4:]
+            self.save()
         
     class Meta:
         verbose_name = "Profile"
