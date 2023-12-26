@@ -1,0 +1,20 @@
+f"""Thank You For Confirming Your Tickets - Club Literario!
+
+Dear {name},
+
+Thank you for confirming your seat at one of the most awaited events, Pre - Brij Literature Festival 2k24.
+
+You'll get notified by the mail once your ticket has been confirmed by the Literario Administration.
+
+Keep Checking your mails.
+
+For any further query, please don't hasitate to contact.
+Mr. Divyanshu Khandelwal: 8273619318
+Mr Utkarsh Choudhary: 9627992635
+
+Best wishes,
+
+Divyanshu Khandelwal,
+Technical Team,
+Club Literario
+GLA University, Mathura"""

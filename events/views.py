@@ -1,9 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
+# import razorpay
+# from django.conf import settings
+# from django.views.decorators.csrf import csrf_exempt
 
 from .models import Event, Registration
 from accounts.models import Profile
+
+# razorpay_client = razorpay.Client(
+#     auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
+
 
 def registration(request):
     
@@ -32,12 +39,49 @@ def registration(request):
         
         new_registration.save()
         
+        # Sending Mail
+        
+        myfile = open(r"events\registration.txt")
+
+        email_subject = ' Confirmation To The Talk Show ❤️ '
+        email_body = eval(myfile.read())
+        email_from = 'khandelwalprinci1@gmail.com'
+        email_to = [email]
+
+        # Send the email
+        send_mail(email_subject, email_body, email_from, email_to)
+
+
+        # ====================================
+        
         messages.success(request, "Welcome to the most awaited event of the year! We are glad to have you on board!".title())
        
         return redirect('registration')
     
     events = Event.objects.all()
     referrals = Profile.objects.all()
+    
+    # currency = 'INR'
+    # amount = 9900
+        
+    # razorpay_order = razorpay_client.order.create(dict(amount=amount,
+    #                                                 currency=currency,
+    #                                                 payment_capture='0'))
+
+    # # order id of newly created order.
+    # razorpay_order_id = razorpay_order['id']
+    # callback_url = '/paymenthandler'
+    
+    # parameters = {
+    #     'events': events,
+    #     'referrals': referrals,
+    # }
+    
+    # parameters['razorpay_order_id'] = razorpay_order_id
+    # parameters['razorpay_merchant_key'] = settings.RAZOR_KEY_ID
+    # parameters['razorpay_amount'] = amount
+    # parameters['currency'] = currency
+    # parameters['callback_url'] = callback_url
     
     parameters = {
         'events': events,
@@ -46,3 +90,60 @@ def registration(request):
     
     return render(request, "home/registration.html", parameters)
 
+# @csrf_exempt
+# def paymenthandler(request
+    
+    print("paymenthandler called")
+ 
+    # only accept POST request.
+    if request.method == "POST":
+        try:
+            
+            print("POST try entered")
+           
+            # get the required parameters from post request.
+            payment_id = request.POST.get('razorpay_payment_id', '')
+            razorpay_order_id = request.POST.get('razorpay_order_id', '')
+            signature = request.POST.get('razorpay_signature', '')
+            params_dict = {
+                'razorpay_order_id': razorpay_order_id,
+                'razorpay_payment_id': payment_id,
+                'razorpay_signature': signature
+            }
+ 
+            print("params_dict created")
+            
+            # verify the payment signature.
+            result = razorpay_client.utility.verify_payment_signature(
+                params_dict)
+            
+            print("signature verified")
+            if result is not None:
+                amount = 9900  # Rs. 200
+                try:
+ 
+                    # capture the payemt
+                    razorpay_client.payment.capture(payment_id, amount)
+ 
+                    # render success page on successful caputre of payment
+                    messages.success(request, "Payment Successful")
+                    return redirect('registration')
+                except:
+ 
+                    # if there is an error while capturing payment.
+                    messages.error(request, "Payment Faliure")
+                    return redirect('registration')
+            else:
+ 
+                # if signature verification fails.
+                messages.error(request, "Payment for signature")
+                return redirect('registration')
+        except:
+ 
+            # if we don't find the required parameters in POST data
+            messages.error(request, "we don't find the required parameters in POST data")
+            return redirect('registration')
+    else:
+       # if other than POST request is made.
+        messages.error(request, "other than POST request is made.")
+        return redirect('registration')

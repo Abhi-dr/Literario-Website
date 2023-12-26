@@ -76,6 +76,25 @@ class Registration(models.Model):
     
     payment_screenshot = models.ImageField(upload_to='events/payment_screenshots', null=True, blank=True)
     referrance_number = models.CharField(max_length=20, null=True, blank=True)
+    
+    approved_by_head = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.name} - {self.event.name}"
+    
+    def save(self, *args, **kwargs):
+        if self.referral_name:
+            self.referral_code = self.referral_name.referral_code
+        super().save(*args, **kwargs)
+        
+    def get_approved_status(self):
+        if self.approved_by_head:
+            return "green"
+        else:
+            return "red"
+    
+    def get_approved_status_text(self):
+        if self.approved_by_head:
+            return "Approved"
+        else:
+            return "Not Approved"

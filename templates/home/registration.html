@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +41,7 @@
 
 
         <h2 class="text-2xl font-bold mb-4">Registration Form</h2>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
 
             {% csrf_token %}
 
@@ -92,7 +94,28 @@
                 </select>
             </div>
 
-            <div class="mb-4">
+            <div class="mt-8 text-center rounded">
+                <img src="{% static 'img/home/abhay_payment.jpeg' %}" alt="Event Image" class="max-w-full rounded-lg">
+            </div>
+
+            <div class="relative mt-5">
+                <label for="screenshot" class="block text-gray-700 font-bold mb-2">Upload Payment Screenshot:</label>
+                <button
+                    class="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 transition duration-200 w-full">
+                    Upload Screenshot
+                </button>
+                <input type="file" id="screenshot" name="screenshot" required
+                    class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
+            </div>
+
+            <div class="mb-4 mt-5">
+                <label for="referrance_number" class="block text-gray-700 font-bold mb-2">UTR/Reference  Number:</label>
+                <input type="text" id="referrance_number" name="referrance_number" required
+                    class="appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+
+
+            <div class="mb-4 mt-5">
                 <label for="referenceName" class="block text-gray-700 font-bold mb-2">Reference: <small>(optional)
                     </small> </label>
                 <select id="referenceName" name="referral_code"
@@ -108,14 +131,8 @@
                 </select>
             </div>
 
-            <!-- <div class="relative">
-                <label for="screenshot" class="block text-gray-700 font-bold mb-2">Upload Payment Screenshot:</label>
-                <button
-                    class="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 transition duration-200 w-full">
-                    Upload Screenshot
-                </button>
-                <input type="file" id="screenshot" name="screenshot" required
-                    class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
+            <!-- <div class="">
+                <button class="btn" id="pay-btn">Pay</button>
             </div> -->
 
             <div class="mt-8 text-right">
@@ -127,6 +144,37 @@
         </form>
     </div>
     <br><br><br>
+
+    <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+
+            // Enter the Key ID generated from the Dashboard
+            key: "{{ razorpay_merchant_key }}",
+
+            // Amount is in currency subunits.
+            // Default currency is INR. Hence, 
+            // 50000 refers to 50000 paise
+            amount: "{{ razorpay_amount }}",
+            currency: "{{ currency }}",
+
+            // Your/store name.
+            name: "Dj Razorpay",
+
+            // Pass the `id` obtained in the response of Step 1
+            order_id: "{{ razorpay_order_id }}",
+            callback_url: "{{ callback_url }}",
+        };
+
+        // initialise razorpay with the options.
+        var rzp1 = new Razorpay(options);
+
+        // add event listener to the payment button.
+        document.getElementById("pay-btn").onclick = function (e) {
+            rzp1.open();
+            e.preventDefault();
+        };
+    </script> -->
 
 
 </body>

@@ -143,3 +143,9 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'green',
     messages.ERROR: 'red',
 }
+
+
+# ========================= PAYMENTS ===================================
+
+RAZOR_KEY_ID = "rzp_test_S3nr4Zn5mSruAu"
+RAZOR_KEY_SECRET = "sOewW6OxomfW1eKbZhPbovVy"

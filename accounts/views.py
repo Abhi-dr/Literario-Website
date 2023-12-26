@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 # def register(request):
@@ -41,3 +42,8 @@ def login(request):
             messages.info(request, 'Username or Password is incorrect')
             return redirect('login')        
     return render(request,'accounts/login.html') 
+
+@login_required(login_url='login')
+def logout(request):
+    auth.logout(request)
+    return redirect('home')

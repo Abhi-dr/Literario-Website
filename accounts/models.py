@@ -59,6 +59,8 @@ class Profile(User):
 
     profile_pic = models.FileField(upload_to="images", blank=True, null=True)
     
+    is_member = models.BooleanField(default=False)
+    
     def __str__(self):
         return f"{self.first_name}"
     

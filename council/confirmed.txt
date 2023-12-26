@@ -1,0 +1,16 @@
+f"""Tickets Confirmed! Club Literario!
+
+Dear {registration.name},
+
+Congratulations! Your ticket to our grand event, The Talk Show, has been confirmed.
+
+For any further query, please don't hasitate to contact.
+Mr. Divyanshu Khandelwal: 8273619318
+Mr Utkarsh Choudhary: 9627992635
+
+Best wishes,
+
+Divyanshu Khandelwal,
+Technical Team,
+Club Literario
+GLA University, Mathura"""
