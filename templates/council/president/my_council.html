@@ -1,0 +1,107 @@
+{% extends "council/president/base.html" %}
+{% block title %}Welcome {{ profile.first_name }}! {% endblock %}
+{% block content %}
+
+<div class="p-4 sm:ml-64">
+    <h1 class="dark:text-gray-900 font-bold mt-14 text-center" style="font-family: cursive; font-size: large;">
+        Welcome ❤️ Mr. President! ❤️
+    </h1>
+
+
+</div>
+
+<div class="p-4 sm:ml-64">
+    <strong class="text-green-100" style="font-family: cursive; font-size: 22px;">My Council</strong>
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-1">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-gray-900 font-bold dark:text-white">
+                            #
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-gray-900 font-bold dark:text-white">
+                            Name
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
+                            Course
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
+                            Year
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
+                            Event
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
+                            Day Scholar / Hosteller
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for member in council %}
+                    <tr
+                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+
+                        <td class="px-6 py-4">
+                            {{ forloop.counter }}
+                        </td>
+
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ member.first_name }} {{ member.last_name }}
+                        </th>
+                        <td class="px-6 py-4 text-center">
+                            {{ member.course }}
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            {{ member.year }}
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            {{ member.hosteller_dayScholar }}
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            {{ member.team }}
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            {{ member.post }}
+                        </td>
+                        <!-- <td class="px-6 py-4 text-center">
+                            <span
+                                class="bg-{{ registration.get_approved_status }}-100 text-{{ registration.get_approved_status }}-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-{{ registration.get_approved_status }}-900 dark:text-{{ registration.get_approved_status }}-300">{{
+                                registration.get_approved_status_text }}</span>
+                        </td> -->
+                        <!-- <td class="px-6 py-4">
+              <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+            </td> -->
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+                <!-- <tfoot>
+                    <tr class="font-semibold text-gray-900 dark:text-white dark:bg-green-500">
+                        <th scope="row" class="px-6 py-3 text-base">Total</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="px-6 py-3 text-center">{{ registrations.count }} </td>
+                    </tr>
+                </tfoot> -->
+            </table>
+        </div>
+
+
+
+    </div>
+
+
+
+
+</div>
+
+{% endblock %}

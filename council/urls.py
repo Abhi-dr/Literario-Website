@@ -16,6 +16,7 @@ urlpatterns = [
     # ============================= PRESIDENT =================================
     
     path('president', president_views.president, name='president'),
+    path("my_council", president_views.my_council, name='my_council'),
     
     # ============================== FINANCE ==================================
     

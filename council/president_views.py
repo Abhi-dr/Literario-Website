@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from .decorators import admin_only
-
+from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from accounts.models import Profile
 from events.models import Registration, Event
 
 @admin_only
+@login_required(login_url='login')
 def president(request):
     profile = Profile.objects.get(id=request.user.id)
     registrations = Registration.objects.all()
@@ -24,4 +25,17 @@ def president(request):
     }
 
     return render(request, 'council/president/index.html', parameters)
+
+
+@admin_only
+@login_required(login_url='login')
+def my_council(request):
+    profile = Profile.objects.get(id=request.user.id)
+    council = Profile.objects.all()
     
+    parameters = {
+        'profile': profile,
+        'council': council,
+    }
+    
+    return render(request, 'council/president/my_council.html', parameters)
