@@ -23,7 +23,7 @@
         class="inline-block m-3 max-w-sm p-6 bg-white ml-auto border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Total Approved Registrations</h5>
+            Approved Registrations</h5>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-green-600 dark:text-white">
             {{ total_approved_registrations }}
         </h5>
@@ -33,9 +33,19 @@
         class="inline-block m-3 max-w-sm p-6 bg-white ml-auto border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Total Unapproved Registrations</h5>
+            Unapproved Registrations</h5>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-green-600 dark:text-white">
             {{ total_unapproved_registrations }}
+        </h5>
+    </div>
+
+    <div
+        class="inline-block m-3 max-w-sm p-6 bg-white ml-auto border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Total Collection</h5>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-green-600 dark:text-white">
+            ₹{{ total_money }}
         </h5>
     </div>
 </div>

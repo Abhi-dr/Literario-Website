@@ -35,7 +35,7 @@
                             </path>
                         </svg>
                     </button>
-                    <a href="{% url 'member' %}" class="flex ms-2 md:me-24">
+                    <a href="{% url 'president' %}" class="flex ms-2 md:me-24">
                         <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKg5rttQg8QeyBv3qe8spfe-nTCMw8MU_nhd3zoe7vhGNTHdZXN0Bdo8btWNtJswMB-7E&usqp=CAU" class="h-8 me-3" alt="FlowBite Logo" /> -->
                         <span
                             class="self-center text-xl font-bold dark:font-bold sm:text-2xl text-green-800 whitespace-nowrap dark:text-green-500">T
@@ -125,7 +125,7 @@
         <div class="h-full px-3 pb-4 overflow-y-auto bg-blue-100 dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="{% url 'member' %}"
+                    <a href="{% url 'president' %}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -155,24 +155,7 @@
                 </li>
 
 
-                {% if user.username == 'finance_head' %}
-
-                <li>
-                    <a href="{% url 'approve_registrations' %}"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 22 21">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4H1m3 4H1m3 4H1m3 4H1m6.071.286a3.429 3.429 0 1 1 6.858 0M4 1h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Zm9 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"/>
-
-                        </svg>
-
-                        
-                        <span class="ms-3">Approve Registrations</span>
-                    </a>
-                </li>
-
-                {% endif %}
+                
 
                 <!-- <li>
           <a href="#"

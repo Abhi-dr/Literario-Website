@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .decorators import finance_head_only
 from events.models import Event, Registration
-
+from accounts.models import Profile
 from django.core.mail import send_mail
 
 from django.contrib import messages
@@ -10,9 +10,11 @@ from django.contrib import messages
 @login_required(login_url='login')
 @finance_head_only
 def approve_registrations(request):
+    profile = Profile.objects.get(id=request.user.id)
     registrations = Registration.objects.filter(approved_by_head=False)
     
     parameters = {
+        'profile': profile,
         'registrations': registrations
     }
     
@@ -20,7 +22,7 @@ def approve_registrations(request):
 
 @login_required(login_url='login')
 @finance_head_only
-def approve_registration(request, registration_id):
+def approve_registration(request, registration_id):    
     registration = Registration.objects.get(id=registration_id)
     registration.approved_by_head = True
     registration.save()
