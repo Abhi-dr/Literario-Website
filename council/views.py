@@ -4,6 +4,8 @@ from accounts.models import Profile
 from django.contrib.auth.decorators import login_required
 from events.models import Event, Registration
 
+from django.contrib import messages
+
 
 def index(request):
     user = request.user
@@ -37,8 +39,38 @@ def member(request):
 def my_profile(request):
     profile = Profile.objects.get(id=request.user.id)
     
+    if request.method == "POST":
+        profile_pic = request.FILES["profile_pic"]
+        profile.profile_pic = profile_pic
+        
+        profile.save()
+        
+        messages.success(request, "Profile Picture has been updated successfully!")
+        
+        return redirect("my_profile")
+    
     parameters = {
         'profile': profile,
     }
     
     return render(request, 'council/member/my_profile.html', parameters)
+
+def update_profile(request):
+    profile = Profile.objects.get(id=request.user.id)
+    
+    if request.method == 'POST':
+        profile.first_name = request.POST['first_name']
+        profile.last_name = request.POST['last_name']
+        profile.email = request.POST['email']
+        profile.mobile_number = request.POST['mobile_number'].replace("+91", "")
+        profile.save()
+        
+        messages.success(request, 'Profile updated successfully!')
+        
+        return redirect('my_profile')
+    
+    parameters = {
+        'profile': profile,
+    }
+    
+    return render(request, 'council/member/update_profile.html', parameters)

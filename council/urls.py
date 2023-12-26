@@ -9,6 +9,8 @@ urlpatterns = [
     path('', views.index, name='council'),
     path("member", views.member, name='member'),
     path("my_profile", views.my_profile, name='my_profile'),
+    path("update_profile", views.update_profile, name='update_profile'),
+    
     
     
     # ============================= PRESIDENT =================================

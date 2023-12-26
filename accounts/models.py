@@ -57,7 +57,7 @@ class Profile(User):
     
     referral_code = models.CharField(max_length=20, blank=True, null=True)
 
-    profile_pic = models.FileField(upload_to="images", blank=True, null=True)
+    profile_pic = models.ImageField(upload_to="images/", blank=True, null=True, default="/images/default.png")
     
     is_member = models.BooleanField(default=False)
     
