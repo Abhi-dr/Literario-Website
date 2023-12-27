@@ -35,6 +35,7 @@ def member(request):
     
     return render(request, 'council/member/index.html', parameters)
 
+
 @login_required(login_url='login')
 def my_profile(request):
     profile = Profile.objects.get(id=request.user.id)
@@ -55,6 +56,7 @@ def my_profile(request):
     
     return render(request, 'council/member/my_profile.html', parameters)
 
+@login_required(login_url='login')
 def update_profile(request):
     profile = Profile.objects.get(id=request.user.id)
     

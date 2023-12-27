@@ -17,6 +17,8 @@ urlpatterns = [
     
     path('president', president_views.president, name='president'),
     path("my_council", president_views.my_council, name='my_council'),
+    path("president_my_profile", president_views.president_my_profile, name='president_my_profile'),
+    path("president_update_profile", president_views.president_update_profile, name='president_update_profile'),
     
     # ============================== FINANCE ==================================
     

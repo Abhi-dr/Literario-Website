@@ -78,6 +78,8 @@ class Registration(models.Model):
     referrance_number = models.CharField(max_length=20, null=True, blank=True)
     
     approved_by_head = models.BooleanField(default=False)
+    
+    is_present = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.name} - {self.event.name}"

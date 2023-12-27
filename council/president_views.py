@@ -5,6 +5,8 @@ from django.db.models import Sum
 from accounts.models import Profile
 from events.models import Registration, Event
 
+from django.contrib import messages
+
 @admin_only
 @login_required(login_url='login')
 def president(request):
@@ -39,3 +41,46 @@ def my_council(request):
     }
     
     return render(request, 'council/president/my_council.html', parameters)
+
+@admin_only
+@login_required(login_url='login')
+def president_my_profile(request):
+    profile = Profile.objects.get(id=request.user.id)
+    
+    if request.method == "POST":
+        profile_pic = request.FILES["profile_pic"]
+        profile.profile_pic = profile_pic
+        
+        profile.save()
+        
+        messages.success(request, "Profile Picture has been updated successfully!")
+        
+        return redirect("president_my_profile")
+    
+    parameters = {
+        'profile': profile,
+    }
+    
+    return render(request, 'council/president/my_profile.html', parameters)
+
+@admin_only
+@login_required(login_url='login')
+def president_update_profile(request):
+    profile = Profile.objects.get(id=request.user.id)
+    
+    if request.method == 'POST':
+        profile.first_name = request.POST['first_name']
+        profile.last_name = request.POST['last_name']
+        profile.email = request.POST['email']
+        profile.mobile_number = request.POST['mobile_number'].replace("+91", "")
+        profile.save()
+        
+        messages.success(request, 'Profile updated successfully!')
+        
+        return redirect('president_my_profile')
+    
+    parameters = {
+        'profile': profile,
+    }
+    
+    return render(request, 'council/president/update_profile.html', parameters)
