@@ -53,7 +53,7 @@ class Profile(User):
     team = models.CharField(max_length=50, choices=TEAM_CHOICES, default='Technical Team')
     post = models.CharField(max_length=20, choices=POST_CHOICES, default='Member')
     gender = models.CharField(choices = GENDER_CHOICES, default = "Male", max_length=10)
-    mobile_number = models.IntegerField()
+    mobile_number = models.CharField(max_length=14, blank=True, null=True)
     
     referral_code = models.CharField(max_length=20, blank=True, null=True)
 

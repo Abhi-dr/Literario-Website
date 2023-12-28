@@ -10,7 +10,7 @@ urlpatterns = [
     path("member", views.member, name='member'),
     path("my_profile", views.my_profile, name='my_profile'),
     path("update_profile", views.update_profile, name='update_profile'),
-    
+    path("change_password", views.change_password, name='change_password'),
     
     
     # ============================= PRESIDENT =================================

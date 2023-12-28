@@ -15,6 +15,32 @@
         th {
             font-family: cursive;
         }
+
+        .HeartAnimation {
+            padding-top: 2em;
+            background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/66955/web_heart_animation.png');
+            background-repeat: no-repeat;
+            background-size: 2900%;
+            background-position: left;
+            height: 40px;
+            width: 90px;
+            margin: 0 0;
+            cursor: pointer;
+        }
+
+        .animate {
+            animation: heart-burst .8s steps(28) forwards;
+        }
+
+        @keyframes heart-burst {
+            0% {
+                background-position: left
+            }
+
+            100% {
+                background-position: right
+            }
+        }
     </style>
 
     {% block css %} {% endblock %}
@@ -39,16 +65,13 @@
                             </path>
                         </svg>
                     </button>
-                    <a href="{% url 'president' %}" class="flex ms-2 md:me-24">
+                    <a href="{% url 'president' %}" class="flex ms-2 md:me-24" style="margin-inline-end: -5%;">
                         <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKg5rttQg8QeyBv3qe8spfe-nTCMw8MU_nhd3zoe7vhGNTHdZXN0Bdo8btWNtJswMB-7E&usqp=CAU" class="h-8 me-3" alt="FlowBite Logo" /> -->
                         <span
                             class="self-center text-xl font-bold dark:font-bold sm:text-2xl text-green-800 whitespace-nowrap dark:text-green-500">T
-                            h e &nbsp; L i t e r a r i o</span> &nbsp; <svg style="margin-top: 5px;"
-                            class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z" />
-                        </svg>
+                            h e &nbsp; L i t e r a r i o </span>
+                        </a>
+                        <div class="HeartAnimation"></div>  
                     </a>
                 </div>
 
@@ -93,7 +116,7 @@
                                         role="menuitem">My Profile</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="{% url 'president_update_profile' %}"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                         role="menuitem">Settings</a>
                                 </li>
@@ -344,6 +367,19 @@
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Function started');
+            
+            var heartElements = document.querySelectorAll('.HeartAnimation');
+        
+            heartElements.forEach(function (heartElement) {
+                heartElement.addEventListener('click', function () {
+                    heartElement.classList.toggle('animate');
+                });
+            });
+        });
+    </script>
 
 </body>
 

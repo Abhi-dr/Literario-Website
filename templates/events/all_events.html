@@ -1,0 +1,18 @@
+{% extends "events/base.html" %}
+
+{% block title %}All Events{% endblock %}
+
+{% block content %}
+<h1>All Events</h1>
+<!-- events/event_detail.html -->
+<h1>{{ event.name }}</h1>
+<p>{{ event.description }}</p>
+<img src="{{ event.thumbnail.url }}" alt="{{ event.name }} thumbnail">
+
+<p>Status based on time: {{ event.get_current_status_based_on_time }}</p>
+<p>Status based on tickets: {{ event.get_current_status_based_on_tickets }}</p>
+
+<!-- Link to the event's detail page using the slug -->
+<a href="">View Details</a>
+
+{% endblock %}

@@ -8,25 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Add this line for the Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{% static 'css/home/registration.css' %}" rel="stylesheet">
+
     <title>Event Registration Form</title>
 
     <style>
-        body {
-            background-image: url("https://c4.wallpaperflare.com/wallpaper/976/206/336/abstract-black-gradient-minimalistic-wallpaper-preview.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-
-
-
+        #otherReferralInput {
+            display: none;
         }
 
-        .bold-option {
-            font-weight: bold;
+        #other{
+            display: none;
         }
     </style>
 </head>
+</body>
 
-<body>
+<body style="font-family: Arial"
+    class="bg-gradient-to-br from-[#131e45] via-blue-950 to-[#212121] scroll-smooth no-scrollbar">
 
     {% for message in messages %}
 
@@ -37,146 +36,176 @@
 
     {% endfor %}
 
-    <div class="w-full max-w-xl mx-auto p-6 rounded-xl shadow-md mt-20" style="background-color: rgb(219 234 254);">
+    <div class="flex items-center justify-center p-12 ">
+        <div style="border-radius: 24px;
+        background: #172554;
+        box-shadow:  20px 20px 40px #121c43,
+                     -20px -20px 40px #121c43;"
+            class="form-container mx-auto w-full max-w-[550px] bg-blue-950 rounded-3xl">
 
 
-        <h2 class="text-2xl font-bold mb-4">Registration Form</h2>
-        <form method="post" enctype="multipart/form-data">
+            <form class="py-6 px-9 text-[#ffffff]" method="POST" enctype="multipart/form-data">
 
-            {% csrf_token %}
+                {% csrf_token %}
 
-            <div class="mb-4">
-                <label for="name" class="block text-gray-700 font-bold mb-2">Full Name:</label>
-                <input type="text" id="name" name="name" required
-                    class="appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
-            </div>
+                <div class="my-2 flex justify-center">
+                    <span class="font-bold text-3xl">Registration Form</span>
+                </div>
+                <br>
+                <div class="mb-5">
+                    <!-- text-[#07074D] -->
+                    <label for="name" class="mb-1 block text-base font-medium text-[#e4dede]">
+                        Full Name:
+                    </label>
+                    <input type="text" name="name" id="email" placeholder="eg:- Bhupendra Jogi"
+                        class="w-full rounded-xl border border-slate-500 bg-slate-100 py-3 px-6 text-base font-medium text-[#000000] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        required />
 
-            <div class="mb-4">
-                <label for="course" class="block text-gray-700 font-bold mb-2">Course:</label>
-                <select id="course" name="course" required
-                    class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
-                    <option selected value="B.Tech">B.Tech</option>
-                    <option value="BCA">BCA</option>
-                    <option value="BBA">BBA</option>
-                    <option value="MCA">MCA</option>
-                    <option value="MBA">MBA</option>
-                    <option value="BA">BA</option>
-                </select>
-            </div>
+                    <label for="course" class="mt-3 mb-1 block text-base font-medium text-[#e4dede]">
+                        Course:
+                    </label>
+                    <select id="course" name="course" required
+                        class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                        <option selected value="B.Tech">B.Tech</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BBA">BBA</option>
+                        <option value="MCA">MCA</option>
+                        <option value="MBA">MBA</option>
+                        <option value="BA">BA</option>
+                    </select>
 
-            <div class="mb-4">
-                <label for="year" class="block text-gray-700 font-bold mb-2">Year Of Study:</label>
-                <select id="year" name="year" required
-                    class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
-                    <option selected value="1st Year">1st Year</option>
-                    <option value="2nd Year">2nd Year</option>
-                    <option value="3rd Year">3rd Year</option>
-                    <option value="4th Year">4th Year</option>
-                </select>
-            </div>
+                    <label for="year" class="mt-3 mb-1 block text-base font-medium text-[#e4dede]">
+                        Year of Study:
+                    </label>
+                    <select id="year" name="year" required
+                        class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                        <option selected value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                    </select>
 
-            <div class="mb-4">
-                <label for="universityMailId" class="block text-gray-700 font-bold mb-2">University Mail ID:</label>
-                <input type="email" id="universityMailId" name="email" required
-                    class="appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
-            </div>
+                    <label for="email" class="mt-3 block text-base font-medium text-[#e4dede]">
+                        E-mail:
+                    </label>
+                    <input type="email" name="email" id="email" placeholder="aayein@gla.ac.in"
+                        class="w-full rounded-xl border border-slate-500 bg-white py-3 px-6 text-base font-medium text-[#000000] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        required />
 
-            <div class="mb-4">
-                <label for="event" class="block text-gray-700 font-bold mb-2">Choose Event(s):</label>
-                <select id="event" name="event"
-                    class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                    <div>
+                        <label for="email" class="mt-3 block text-base font-medium text-[#e4dede]">
+                            Choose Event:
+                        </label>
+                        <div class="relative">
+                            <select required name="event"
+                                class="w-full rounded-xl border border-slate-500 bg-white py-3 px-6 mr-5 text-base font-medium text-[#000000] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                id="grid-state">
+                                <option class="text-[#767575]" disabled>Choose here</option>
+                                {% for event in events %}
 
-                    {% for event in events %}
+                                <option value="{{ event.id }}">{{ event.name }} - ₹{{ event.ticket_price }}</option>
 
-                    <option value="{{ event.id }}">{{ event.name }} - ₹{{ event.ticket_price }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-                    {% endfor %}
-                </select>
-            </div>
+                <div class="mt-8 text-center rounded">
+                    <img src="{% static 'img/home/abhay_payment.jpeg' %}" alt="Event Image"
+                        class="max-w-full rounded-lg">
+                </div>
+                <br>
 
-            <div class="mt-8 text-center rounded">
-                <img src="{% static 'img/home/abhay_payment.jpeg' %}" alt="Event Image" class="max-w-full rounded-lg">
-            </div>
+                <div class="">
+                    <div class="mb-8">
+                        <label for="file"
+                            class="relative flex min-h-[100px] items-center justify-center rounded-md border border-dashed border-[#e4dede] p-12 text-center">
+                            <div>
+                                <span
+                                    class="inline-flex rounded border border-[#ffffff] py-2 px-7 text-base font-medium text-[#e4dede]">
+                                    Browse
+                                </span>
+                            </div>
+                        </label>
+                        <input type="file" name="screenshot" accept="image/*" required="" id="file" class="sr-only" />
+                    </div>
 
-            <div class="relative mt-5">
-                <label for="screenshot" class="block text-gray-700 font-bold mb-2">Upload Payment Screenshot:</label>
-                <button
-                    class="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-700 transition duration-200 w-full">
-                    Upload Screenshot
-                </button>
-                <input type="file" id="screenshot" name="screenshot" required
-                    class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
-            </div>
+                    <div style="margin-top: -20px;">
+                        <button disabled
+                            class="hover:shadow-form w-full rounded-md bg-[#6A64F1] hover:bg-[#4c47ac] py-3 px-8 text-center text-base font-semibold text-[#e4dede] outline-none">
+                            Upload Payment Screenshot Here 👆
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <label for="text" class="mt-3 block text-base font-medium text-[#e4dede]">
+                        UTR/Reference Number:
+                    </label>
+                    <input type="text" name="referrance_number" id="utr" placeholder="example@domain.com"
+                        class="w-full rounded-xl border border-slate-500 bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        required />
 
-            <div class="mb-4 mt-5">
-                <label for="referrance_number" class="block text-gray-700 font-bold mb-2">UTR/Reference  Number:</label>
-                <input type="text" id="referrance_number" name="referrance_number" required
-                    class="appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
-            </div>
+                    <label for="Reference" class="mt-3 block text-base font-medium text-[#e4dede]">
+                        Reference<span class="text-sm">(optional)</span>:
+                    </label>
+                    <select id="referenceName" name="referral_code" onchange="checkReferral()"
+                        class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                        <option value="" selected disabled hidden>--Select--</option>
+
+                        {% for referral in referrals %}
+                        <option value="{{ referral.referral_code }}">
+                            {{ referral.first_name }} {{ referral.last_name }} (Lit-{{referral.referral_code}})
+                        </option>
+                        {% endfor %}
+                        <option value="other">Other</option>
+
+                    </select>
+
+                    <label for="otherReferralInput" id="other"
+                        class="mt-3 block text-base font-medium text-[#e4dede]">
+                        Other Referral Name:
+                        </label>
+                   
+
+                    <input type="text" id="otherReferralInput" placeholder="eg: Literario Lover" name="other_referral_name"
+                        class="w-full rounded-xl border border-slate-500 bg-white py-3 px-6 text-base font-medium text-[#000000] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        required />
+
+                    <br>
 
 
-            <div class="mb-4 mt-5">
-                <label for="referenceName" class="block text-gray-700 font-bold mb-2">Reference: <small>(optional)
-                    </small> </label>
-                <select id="referenceName" name="referral_code"
-                    class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
-                    <option value="" selected disabled hidden>--Select--</option>
-
-                    {% for referral in referrals %}
-                    <option value="{{ referral.referral_code }}">
-                        {{ referral.first_name }} {{ referral.last_name }} (Lit-{{referral.referral_code}})
-                    </option>
-                    {% endfor %}
-
-                </select>
-            </div>
-
-            <!-- <div class="">
-                <button class="btn" id="pay-btn">Pay</button>
-            </div> -->
-
-            <div class="mt-8 text-right">
-                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                    Book Your Ticket Now!
-                </button>
-            </div>
-
-        </form>
+                </div>
+                <div>
+                    <button
+                        class="hover:shadow-form w-full rounded-md bg-[#44ce4d] hover:bg-[#38943e] py-3 px-8 text-center text-base font-semibold text-[#e4dede] outline-none">
+                        Book Your Ticket Now!
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-    <br><br><br>
 
-    <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
-        var options = {
 
-            // Enter the Key ID generated from the Dashboard
-            key: "{{ razorpay_merchant_key }}",
+        function checkReferral() {
+            console.log("Hello");
+            var referralSelect = document.getElementById("referenceName");
+            var other = document.getElementById("other");
+            var otherReferralInput = document.getElementById("otherReferralInput");
 
-            // Amount is in currency subunits.
-            // Default currency is INR. Hence, 
-            // 50000 refers to 50000 paise
-            amount: "{{ razorpay_amount }}",
-            currency: "{{ currency }}",
-
-            // Your/store name.
-            name: "Dj Razorpay",
-
-            // Pass the `id` obtained in the response of Step 1
-            order_id: "{{ razorpay_order_id }}",
-            callback_url: "{{ callback_url }}",
+            if (referralSelect.value === "other") {
+                other.style.display = "block";
+                otherReferralInput.style.display = "block";
+                
+                
+            } else {
+                other.style.display = "none";
+                otherReferralInput.style.display = "none";
+            }
         };
-
-        // initialise razorpay with the options.
-        var rzp1 = new Razorpay(options);
-
-        // add event listener to the payment button.
-        document.getElementById("pay-btn").onclick = function (e) {
-            rzp1.open();
-            e.preventDefault();
-        };
-    </script> -->
-
-
+    </script>
 </body>
+
 
 </html>

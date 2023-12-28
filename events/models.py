@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 from django.utils import timezone
 
 from accounts.models import Profile
@@ -11,14 +12,14 @@ class Event(models.Model):
     latest_update = models.TextField(blank=True, null=True)
     ticket_price = models.IntegerField(default=0)
     total_tickets = models.IntegerField(default=0)
-    
     thumbnail = models.ImageField(upload_to='events/thumbnails', default='events/thumbnails/default.png')
+    slug = models.SlugField(max_length=200, unique=True)  # New slug field
     
     def __str__(self):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('events:detail', kwargs={'pk': self.pk})
+        return reverse('events:detail', kwargs={'slug': self.slug})
     
     def get_current_status_based_on_time(self):
         if self.date > timezone.now():
@@ -31,7 +32,11 @@ class Event(models.Model):
             return "Available"
         else:
             return "Sold Out"
-        
+    
+    def save(self, *args, **kwargs):
+        # Automatically generate and save the slug based on the event name
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 # ===================================== Registration ==================================
 
 class Registration(models.Model):
@@ -73,6 +78,8 @@ class Registration(models.Model):
     referral_name = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)
     
     referral_code = models.CharField(max_length=10, null=True, blank=True)
+    
+    other_referral_name = models.CharField(max_length=255, null=True, blank=True)
     
     payment_screenshot = models.ImageField(upload_to='events/payment_screenshots', null=True, blank=True)
     referrance_number = models.CharField(max_length=20, null=True, blank=True)

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404
 # import razorpay
 # from django.conf import settings
 # from django.views.decorators.csrf import csrf_exempt
@@ -22,6 +23,10 @@ def registration(request):
         event_id = request.POST.get('event')
         referral_code = request.POST.get('referral_code')
         
+        other_referral_name = request.POST.get('other_referral_name')
+        
+        payment_screenshot = request.FILES.get('screenshot')
+        
         # Check if user has already registered for this event
         if Registration.objects.filter(email=email).exists():
             messages.error(request, "You have already registered for this event.")
@@ -34,8 +39,11 @@ def registration(request):
             email = email,
             event = Event.objects.get(id=event_id),
             referral_name = Profile.objects.get(referral_code=referral_code),
-            referral_code = referral_code
+            referral_code = referral_code,
+            other_referral_name = other_referral_name,
         )
+        
+        new_registration.payment_screenshot = payment_screenshot
         
         new_registration.save()
         
@@ -147,3 +155,13 @@ def registration(request):
        # if other than POST request is made.
         messages.error(request, "other than POST request is made.")
         return redirect('registration')
+    
+    
+# def all_events(request):
+#     events = Event.objects.all()
+#     return render(request, 'events/all_events.html', {'events': events})
+
+
+# def event_detail(request, slug):
+#     event = get_object_or_404(Event, slug=slug)
+#     return render(request, 'events/event_detail.html', {'event': event})
