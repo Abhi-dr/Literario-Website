@@ -17,7 +17,7 @@
             display: none;
         }
 
-        #other{
+        #other {
             display: none;
         }
     </style>
@@ -41,10 +41,10 @@
         background: #172554;
         box-shadow:  20px 20px 40px #121c43,
                      -20px -20px 40px #121c43;"
-            class="form-container mx-auto w-full max-w-[550px] bg-blue-950 rounded-3xl">
+            class="form-container mx-auto w-full max-w-[550px] bg-blue-900 rounded-3xl">
 
 
-            <form class="py-6 px-9 text-[#ffffff]" method="POST" enctype="multipart/form-data">
+            <form method="post" class="py-6 px-9 text-[#ffffff]" enctype="multipart/form-data">
 
                 {% csrf_token %}
 
@@ -142,7 +142,7 @@
                     <label for="text" class="mt-3 block text-base font-medium text-[#e4dede]">
                         UTR/Reference Number:
                     </label>
-                    <input type="text" name="referrance_number" id="utr" placeholder="example@domain.com"
+                    <input type="text" name="referrance_number" id="utr"
                         class="w-full rounded-xl border border-slate-500 bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                         required />
 
@@ -162,49 +162,48 @@
 
                     </select>
 
-                    <label for="otherReferralInput" id="other"
-                        class="mt-3 block text-base font-medium text-[#e4dede]">
+                    <label for="otherReferralInput" id="other" class="mt-3 block text-base font-medium text-[#e4dede]">
                         Other Referral Name:
-                        </label>
-                   
+                    </label>
 
-                    <input type="text" id="otherReferralInput" placeholder="eg: Literario Lover" name="other_referral_name"
+
+                    <input type="text" id="otherReferralInput" placeholder="eg: Literario Lover"
+                        name="other_referral_name"
                         class="w-full rounded-xl border border-slate-500 bg-white py-3 px-6 text-base font-medium text-[#000000] outline-none focus:border-[#6A64F1] focus:shadow-md"
                         required />
-
                     <br>
 
 
                 </div>
                 <div>
-                    <button
-                        class="hover:shadow-form w-full rounded-md bg-[#44ce4d] hover:bg-[#38943e] py-3 px-8 text-center text-base font-semibold text-[#e4dede] outline-none">
-                        Book Your Ticket Now!
-                    </button>
+                    <button type="submit"
+                        class="hover:shadow-form w-full rounded-md bg-[#44ce4d] hover:bg-[#38943e] py-3 px-8 text-center text-base font-semibold text-[#e4dede] outline-none">Book
+                        Your Ticket Now! </button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-
         function checkReferral() {
-            console.log("Hello");
             var referralSelect = document.getElementById("referenceName");
             var other = document.getElementById("other");
             var otherReferralInput = document.getElementById("otherReferralInput");
-
+    
             if (referralSelect.value === "other") {
                 other.style.display = "block";
                 otherReferralInput.style.display = "block";
-                
-                
+                otherReferralInput.disabled = false; // Enable the input field
             } else {
                 other.style.display = "none";
                 otherReferralInput.style.display = "none";
+                otherReferralInput.disabled = true; // Disable the input field
             }
         };
     </script>
+    
+
+
 </body>
 
 

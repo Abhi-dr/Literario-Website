@@ -1,0 +1,29 @@
+{% extends "council/president/base.html" %}
+{% block title %}All Events{% endblock %}
+{% block content %}
+
+<div class="p-4 sm:ml-64">
+    <h1 class="dark:text-white font-bold mt-14 text-center" style="font-family: cursive; font-size: large;">
+        Welcome ❤️ Mr. President! ❤️
+      </h1>
+
+{% for event in events %}
+
+<a href="{% url 'event_details' event.slug %}">
+    <div
+        class="inline-block mt-14 m-3 w-full mt-5 max-w-sm p-6 bg-white ml-auto border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {{ event.name }}</h5>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-green-600 dark:text-white">
+            {{ registrations.count }}
+        </h5>
+    </div>
+
+</a>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

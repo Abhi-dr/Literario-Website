@@ -49,10 +49,27 @@ def registration(request):
         
         # Sending Mail
         
-        myfile = open(r"events\registration.txt")
+        myfile = f"""Thank You For Confirming Your Tickets - Club Literario!
+
+Dear {name},
+
+CONGRATULATIONS! 🎉✨ You have successfully booked your seat in “Pre BLF” -one of the prestigious events of GLA University.
+You will soon get confirmation of your ticket once reviewed by the Literario Administration.📝
+
+Will keep you mailed the further updates! Have a great day.
+
+For any further uncertainty, please feel welcomed;😊
+Mr. Divyanshu Khandelwal: 8273619318
+Mr. Priyanshu Gera: 7302068234
+
+Best wishes,
+Divyanshu Khandelwal,
+Technical Team,
+Club Literario
+GLA University Mathura."""
 
         email_subject = ' Confirmation To The Talk Show ❤️ '
-        email_body = eval(myfile.read())
+        email_body = myfile
         email_from = 'khandelwalprinci1@gmail.com'
         email_to = [email]
 

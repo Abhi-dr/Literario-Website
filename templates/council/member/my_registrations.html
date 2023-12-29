@@ -1,0 +1,181 @@
+{% extends "council/member/base.html" %}
+
+{% block title %}Register My Friend ❤️{% endblock %}
+
+{% block content %}
+
+<div class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+
+        {% for message in messages %}
+
+        <div id="alert-2"
+            class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-{{ message.tags }}-50 dark:bg-gray-800 dark:text-{{ message.tags }}-400"
+            role="alert">
+            <div class="m-sm-5 text-sm font-medium">
+                {{ message }}
+            </div>
+
+            <button type="button"
+                class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-{{ message.tags }}-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-{{ message.tags }}-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-{{ message.tags }}-400 dark:hover:bg-gray-700"
+                data-dismiss-target="#alert-2" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+
+        {% endfor %}
+
+        <section class="bg-white dark:bg-gray-800 rounded-lg">
+            <div class="max-w-2xl px-1 py-2 mx-auto lg:py-16">
+                <h2 class="mb-4 text-2xl text-center font-bold text-gray-900 dark:text-white"
+                    style="font-size: 28px; font-family: cursive;">Event Registration</h2>
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="mb-5">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full
+                            Name</label>
+                        <input type="text" name="name" id="name"
+                            class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            required>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="course"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label>
+                        <select name="course" id="course"
+                            class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            required>
+                            <option selected value="B.Tech">B.Tech</option>
+                            <option value="BCA">BCA</option>
+                            <option value="BBA">BBA</option>
+                            <option value="MCA">MCA</option>
+                            <option value="MBA">MBA</option>
+                            <option value="BA">BA</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+
+                    <div class="mb-5">
+                        <label for="year"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
+                        <select name="year" id="year"
+                            class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            required>
+                            <option selected value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
+                            Address</label>
+                        <input type="email" name="email" id="name"
+                            class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            required>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="referral" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Event
+                            Name</label>
+                        <select name="event" id="referral"
+                            class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            required>
+
+                            {% for event in events %}
+
+                            <option value="{{ event.id }}">{{ event.name }} - ₹{{ event.ticket_price }}</option>
+
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <!-- <div class="mb-5">
+                        <label for="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose
+                            File</label>
+                        <input type="file" name="file" id="file"
+                            class="bg-gray-50 w-full border border-gray-700 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div> -->
+
+                    <div class="mb-5">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Referral
+                            Code</label>
+                        <input type="text" id="name"
+                            class="bg-gray-50 w-full border border-gray-700 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ profile.referral_code }}" disabled>
+                    </div>
+
+
+                    <div class="mb-5">
+                        <label for="registration_type"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Registration
+                            Type</label>
+                        <select name="registration_type" id="registration_type"
+                            class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            onchange="toggleQRCode()">
+                            <option value="cache">CASH</option>
+
+                            {% if profile.qr_code %}
+
+                            <option value="online">ONLINE</option>
+
+                            {% endif %}
+                        </select>
+                    </div>
+
+                    {% if profile.qr_code %}
+                    <div id="qr_code_section" class="mb-5 hidden">
+                        <label for="qr_code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">QR
+                            Code</label>
+                        <img id="qr_code" src="{{ profile.qr_code.url }}" alt="QR Code"
+                            class="w-full max-w-lg mx-auto mb-3">
+                    </div>
+
+                    {% endif %}
+
+                    <button type="submit"
+                        class="text-white w-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Register</button>
+
+                </form>
+            </div>
+        </section>
+
+
+
+    </div>
+</div>
+
+{% if profile.qr_code %}
+
+<script>
+    function toggleQRCode() {
+        var registrationType = document.getElementById("registration_type").value;
+        var qrCodeSection = document.getElementById("qr_code_section");
+        var qrCodeImage = document.getElementById("qr_code");
+
+        if (registrationType === "online") {
+            // For simplicity, use a demo QR code image URL
+            qrCodeImage.src = "{{ profile.qr_code.url }}";
+
+            // Show the QR code section
+            qrCodeSection.classList.remove("hidden");
+        } else {
+            // Hide the QR code section
+            qrCodeSection.classList.add("hidden");
+        }
+    }
+</script>
+
+{% endif %}
+
+{% endblock %}

@@ -12,6 +12,7 @@ urlpatterns = [
     path("update_profile", views.update_profile, name='update_profile'),
     path("change_password", views.change_password, name='change_password'),
     
+    path("my_registrations", views.my_registrations, name='my_registrations'),
     
     # ============================= PRESIDENT =================================
     
@@ -19,6 +20,9 @@ urlpatterns = [
     path("my_council", president_views.my_council, name='my_council'),
     path("president_my_profile", president_views.president_my_profile, name='president_my_profile'),
     path("president_update_profile", president_views.president_update_profile, name='president_update_profile'),
+    path("president_events", president_views.president_events, name='president_events'),
+    
+    path("event_details/<slug:slug>", president_views.event_details, name='event_details'),
     
     # ============================== FINANCE ==================================
     

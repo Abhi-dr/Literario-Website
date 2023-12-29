@@ -1,12 +1,228 @@
 {% extends "home/base.html" %}
+{% load static %}
 
 {% block about_active %} active {% endblock %}
 
 {% block content %}
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-<h1>
-    About
-</h1>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<br><br><br><br>
+
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="#"><i class="fa fa-home"></i> Home</a>
+                    <span>About</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+    <!-- Skills Section Begin -->
+    <section class="skills spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 p-0">
+                    <div class="skills__content">
+                        <div class="section-title">
+                            <h2>Brij Literature Fest</h2>
+                            <h1>Club Literario</h1>
+                        </div>
+                        <p>Welcome to Brij Literature Fest, where the magic of words takes center stage! Immerse yourself in a celebration of literature with captivating workshops, events, and insightful talk shows. Renowned guests and literary icons join us for an unforgettable experience that goes beyond the ordinary. Join the literary journey at Brij Literature Fest—a fest that transforms words into a vibrant tapestry of creativity and inspiration!
+
+                        </p>
+                        <div class="skill__bar__item">  
+                            <p>Learning & Enjoyment</p>
+                            <div id="bar1" class="barfiller">
+                                <span class="tip"></span>
+                                <span class="fill" data-percentage="100"></span>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                <div class="col-lg-6 p-0">
+                    <div class="skills__video set-bg" data-setbg="{% static 'img/home/skill-video.JPG' %}">
+                        <a href="https://www.youtube.com/watch?v=S19UcWdOA-I?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section End -->
+
+    <!-- About Section Begin -->
+    <section class="about about--page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about__pic">
+                        <img id="aboutpic" src="{% static 'img/home/lit/l10.JPG' %}"  alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about__text">
+                        <div class="section-title">
+                            <h2>About Literario Club</h2>
+                        </div>
+                        <p>
+                            Welcome to Literario Club, where literature comes to life. We're not just a club; we're a community of wordsmiths passionate about storytelling. Dive into diverse genres, engage in discussions, and unleash your creativity in our writing workshops. With dedicated mentors and a supportive family of members, Literario Club is your haven for literary exploration. Join us in celebrating the art of expression and be part of our ever-evolving literary journey.</p>
+                        <img src="{% static 'img/home/literariologo.png' %}" style="width: 25%;opacity: 60%;" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- About Pic Begin -->
+    <div class="about-pic">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{% static 'img/home/lit/l2.JPG' %}" alt="">
+                            <img src="{% static 'img/home/lit/9.JPG' %}" alt="">
+                            <img src="{% static 'img/home/lit/5.JPG' %}" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
+                            <img src="{% static 'img/home/lit/collage.png' %}" alt="">
+                            <img src="{% static 'img/home/lit/1.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
+                            <img src="{% static 'img/home/lit/l5.JPG' %}" alt="">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{% static 'img/home/lit/l8.webp' %}" style="height: 96%;" alt="">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{% static 'img/home/lit/10.JPG' %}" alt="">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{% static 'img/home/lit/l6.JPG' %}"  alt="">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{% static 'img/home/lit/l7.JPG' %}"  alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Pic End -->
+
+    <!-- About Services Section Begin -->
+    <section class="about-services spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title center-title">
+                        <h2>Our Team</h2>
+                        <h1>#FAMILY</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="about__services__item">
+                        <div class="about__services__item__pic set-bg" data-setbg="{% static 'img/home/lit/mentor.JPG' %} ">
+                            <div class="icon">
+                                <img src="{% static 'img/home/literario.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="about__services__item__text">
+                            <h4>Club Mentor</h4>
+                            <p>Mrs. Mamta Bhatnagar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="about__services__item">
+                        <div class="about__services__item">
+                            <div class="about__services__item__pic set-bg" data-setbg="{% static 'img/home/lit/l9.jpeg' %} ">
+                                <div class="icon">
+                                    <img src="{% static 'img/home/literario.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="about__services__item__text">
+                                <h4>President</h4>
+                                <p>Priyanshu Rai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="about__services__item">
+                        <div class="about__services__item">
+                            <div class="about__services__item__pic set-bg" data-setbg="{% static 'img/home/lit/l2.JPG' %} ">
+                                <div class="icon">
+                                    <img src="{% static 'img/home/literario.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="about__services__item__text">
+                                <h4>Vice-President</h4>
+                                <p>Aishwant Saini</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="about__services__item">
+                        <div class="about__services__item__pic set-bg" data-setbg="{% static 'img/home/lit/6.JPG' %}">
+                            <div class="icon">
+                                <img src="{% static 'img/home/services/as-icon-3.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="about__services__item__text">
+                            <h4>Bhupendra jogi</h4>
+                            <p>America me boht jagah</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="about__services__item">
+                        <div class="about__services__item__pic set-bg" data-setbg="{% static 'img/home/lit/6.JPG' %}">
+                            <div class="icon">
+                                <img src="{% static 'img/home/services/as-icon-3.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="about__services__item__text">
+                            <h4>Bhupendra jogi</h4>
+                            <p>America me boht jagah</p>
+                        </div>
+                    </div>
+                </div> <br><br><br><br>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="about__services__item">
+                        <div class="about__services__item__pic set-bg" data-setbg="{% static 'img/home/lit/6.JPG' %}">
+                            <div class="icon">
+                                <img src="{% static 'img/home/services/as-icon-3.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="about__services__item__text">
+                            <h4>Bhupendra jogi</h4>
+                            <p>America me boht jagah</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Services Section End -->
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
 
 {% endblock %}

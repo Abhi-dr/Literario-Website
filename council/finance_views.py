@@ -27,12 +27,28 @@ def approve_registration(request, registration_id):
     registration.approved_by_head = True
     registration.save()
     
-    # Sending Mail
-        
-    myfile = open(r"council\confirmed.txt")
+    myfile = f"""Tickets Confirmed! Club Literario!
+
+Dear {registration.name},
+
+CONGRATULATIONS! 🎉 Your Ticket for our magnificent event – “The Talk Show” has been confirmed. We will be excitedly waiting for you to be a keen audience.🙌
+
+Stand by your mail for further updates!
+
+For any kind of doubts or burning queries, we always welcome you;
+Mr. Divyanshu Khandelwal: 8273619318
+Mr. Priyanshu Gera: 7302068234
+
+Hope you have a great day.🌸
+
+Best wishes,
+Divyanshu Khandelwal,
+Technical Team,
+Club Literario
+GLA University Mathura."""
 
     email_subject = ' Confirmation To The Talk Show ❤️ '
-    email_body = eval(myfile.read())
+    email_body = myfile
     email_from = 'Divyanshu Khandelwal'
     email_to = [registration.email]
 

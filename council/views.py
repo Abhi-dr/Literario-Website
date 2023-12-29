@@ -3,6 +3,7 @@ from .decorators import admin_only
 from accounts.models import Profile
 from django.contrib.auth.decorators import login_required
 from events.models import Event, Registration
+from django.core.mail import send_mail
 
 from django.contrib import messages
 
@@ -71,6 +72,7 @@ def update_profile(request):
         profile.last_name = request.POST['last_name']
         profile.email = request.POST['email']
         profile.mobile_number = request.POST['mobile_number'].replace("+91", "")
+        profile.qr_code = request.FILES.get('qr_code')
         profile.save()
         
         messages.success(request, 'Profile updated successfully!')
@@ -115,3 +117,56 @@ def change_password(request):
     
     return render(request, 'council/member/change_password.html', parameters)
 
+# ================================================= MY REGISTRATIONS ============================================
+
+@login_required(login_url='login')
+def my_registrations(request):
+    profile = Profile.objects.get(id=request.user.id)
+    events = Event.objects.all()
+    
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        course = request.POST.get('course')
+        year = request.POST.get('year')
+        email = request.POST.get('email')
+        event = Event.objects.get(id=request.POST.get('event'))
+        
+        if Registration.objects.filter(email=email).exists():
+            messages.error(request, "You have already registered for this event.")
+            return redirect('my_registrations')
+    
+        new_registration = Registration(
+            name = name,
+            course = course,
+            year = year,
+            email = email,
+            event = event,
+            referral_name = profile,
+            referral_code = profile.referral_code,
+            approved_by_head = True
+        )
+        
+        myfile = open(r"events\registration.txt")
+
+        email_subject = ' Confirmation To The Talk Show ❤️ '
+        email_body = eval(myfile.read())
+        email_from = 'khandelwalprinci1@gmail.com'
+        email_to = [email]
+
+        # Send the email
+        send_mail(email_subject, email_body, email_from, email_to)
+
+                
+        new_registration.save()
+        
+        messages.success(request, "Welcome to the most awaited event of the year! We are glad to have you on board!".title())
+
+        
+        return redirect('my_registrations')
+    
+    parameters = {
+        'profile': profile,
+        'events': events
+    }
+    
+    return render(request, 'council/member/my_registrations.html', parameters)
