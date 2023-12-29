@@ -42,10 +42,13 @@ def my_profile(request):
     profile = Profile.objects.get(id=request.user.id)
     
     if request.method == "POST":
-        profile_pic = request.FILES["profile_pic"]
-        profile.profile_pic = profile_pic
         
-        profile.save()
+        if request.FILES.get("profile_pic", False):
+        
+            profile_pic = request.FILES["profile_pic"]
+            profile.profile_pic = profile_pic
+        
+            profile.save()
         
         messages.success(request, "Profile Picture has been updated successfully!")
         
