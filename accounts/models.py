@@ -72,7 +72,14 @@ class Profile(User):
         super().save(*args, **kwargs)
                 
         if not self.referral_code:
-            self.referral_code = self.first_name[:4].lower() + str(self.mobile_number)[-4:]
+            
+            if self.mobile_number:
+                self.referral_code = self.first_name[:4].lower() + str(self.mobile_number)[-4:]
+            
+            else:
+                from random import randint
+                self.referral_code = self.first_name[:4].lower() + str(randint(1000, 9999))
+            
             self.save()
         
     class Meta:

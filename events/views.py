@@ -37,11 +37,22 @@ def registration(request):
             course = course,
             year = year,
             email = email,
-            event = Event.objects.get(id=event_id),
-            referral_name = Profile.objects.get(referral_code=referral_code),
-            referral_code = referral_code,
-            other_referral_name = other_referral_name,
+            event = Event.objects.get(id=event_id)
         )
+        
+        # referral_name = Profile.objects.get(referral_code=referral_code),
+        # referral_code = referral_code,
+        # other_referral_name = other_referral_name,
+        
+        if referral_code != 'other' and referral_code != 'none':
+            new_registration.referral_code = referral_code
+            new_registration.referral_name = Profile.objects.get(referral_code=referral_code)
+            
+        elif referral_code == 'none':
+            new_registration.referral_code = referral_code
+            
+        elif referral_code == 'other':
+            new_registration.other_referral_name = other_referral_name
         
         new_registration.payment_screenshot = payment_screenshot
         

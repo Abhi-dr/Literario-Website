@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'council.apps.CouncilConfig',
     'events.apps.EventsConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [
