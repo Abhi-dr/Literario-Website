@@ -129,6 +129,9 @@ def my_registrations(request):
         course = request.POST.get('course')
         year = request.POST.get('year')
         email = request.POST.get('email')
+        day_host = request.POST.get('day_host')
+
+        
         event = Event.objects.get(id=request.POST.get('event'))
         
         if Registration.objects.filter(email=email).exists():
@@ -141,6 +144,7 @@ def my_registrations(request):
             year = year,
             email = email,
             event = event,
+            hosteller_dayScholar = day_host,
             referral_name = profile,
             referral_code = profile.referral_code,
             approved_by_head = True

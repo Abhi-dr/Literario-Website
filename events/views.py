@@ -20,6 +20,7 @@ def registration(request):
         course = request.POST.get('course')
         year = request.POST.get('year')
         email = request.POST.get('email')
+        day_host = request.POST.get('day_host')
         event_id = request.POST.get('event')
         referral_code = request.POST.get('referral_code')
         
@@ -37,6 +38,7 @@ def registration(request):
             course = course,
             year = year,
             email = email,
+            hosteller_dayScholar = day_host,
             event = Event.objects.get(id=event_id)
         )
         

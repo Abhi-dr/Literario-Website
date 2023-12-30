@@ -73,11 +73,12 @@
               {{ referral.year }}
             </td>
             <td class="px-6 py-4 text-center">
-              {{ referral.hosteller_dayScholar }}
-            </td>
-            <td class="px-6 py-4 text-center">
               {{ referral.event }}
             </td>
+            <td class="px-6 py-4 text-center">
+              {{ referral.hosteller_dayScholar }}
+            </td>
+            
             <td class="px-6 py-4 text-center">
               <span
                 class="bg-{{ referral.get_approved_status }}-100 text-{{ referral.get_approved_status }}-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-{{ referral.get_approved_status }}-900 dark:text-{{ referral.get_approved_status }}-300">{{ referral.get_approved_status_text }}</span>
