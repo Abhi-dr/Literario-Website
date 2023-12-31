@@ -10,10 +10,17 @@ class Event(models.Model):
     date = models.DateTimeField('date published')
     description = models.TextField()
     latest_update = models.TextField(blank=True, null=True)
-    ticket_price = models.IntegerField(default=0)
     total_tickets = models.IntegerField(default=0)
     thumbnail = models.ImageField(upload_to='events/thumbnails', default='events/thumbnails/default.png')
-    slug = models.SlugField(max_length=200, unique=True)  # New slug field
+    slug = models.SlugField(max_length=200, unique=True)
+    
+    # ================= Prices ===================
+    ticket_price = models.IntegerField(default=0)
+    
+    solo_price = models.IntegerField(default=0)
+    duo_price = models.IntegerField(default=0)
+    group_price = models.IntegerField(default=0)
+
     
     def __str__(self):
         return self.name
@@ -67,6 +74,12 @@ class Registration(models.Model):
         ("Hosteller", "Hosteller"),
     ]
     
+    REGISTRATION_TYPE_CHOICES = [
+        ("Solo", "Solo"),
+        ("Group", "Group"),
+        ("Duo", "Duo")
+    ]
+    
     name = models.CharField(max_length=255)
     course = models.CharField(max_length=20, choices=COURSE_CHOICES, default='B.Tech')
     year = models.CharField(max_length=20, choices=YEAR_CHOICES, default='1st Year')
@@ -74,6 +87,8 @@ class Registration(models.Model):
     hosteller_dayScholar = models.CharField(max_length=20, choices=D_H_CHOICES, default='Day Scholar')
     
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    
+    registration_type = models.CharField(max_length=20, choices=REGISTRATION_TYPE_CHOICES, default='Solo', null=True, blank=True)
     
     referral_name = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)
     

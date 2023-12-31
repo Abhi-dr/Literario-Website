@@ -22,6 +22,8 @@ def registration(request):
         email = request.POST.get('email')
         day_host = request.POST.get('day_host')
         event_id = request.POST.get('event')
+        event = Event.objects.get(id=event_id)
+
         referral_code = request.POST.get('referral_code')
         
         other_referral_name = request.POST.get('other_referral_name')
@@ -32,6 +34,9 @@ def registration(request):
         if Registration.objects.filter(email=email).exists():
             messages.error(request, "You have already registered for this event.")
             return redirect('registration')
+        
+        if event.ticket_price == 0:
+            
     
         new_registration = Registration(
             name = name,
@@ -39,7 +44,7 @@ def registration(request):
             year = year,
             email = email,
             hosteller_dayScholar = day_host,
-            event = Event.objects.get(id=event_id)
+            event = event
         )
         
         # referral_name = Profile.objects.get(referral_code=referral_code),

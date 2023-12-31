@@ -85,8 +85,8 @@
                     </div>
 
                     <div class="mb-5">
-                        <label for="year"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Day Scholar / Hosteller</label>
+                        <label for="year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Day
+                            Scholar / Hosteller</label>
                         <select name="day_host" id="year"
                             class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
@@ -99,18 +99,48 @@
                     <div class="mb-5">
                         <label for="referral" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Event
                             Name</label>
-                        <select name="event" id="referral"
+                        <select name="event" id="event" onchange="toggleRegistrationType()"
                             class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
 
                             {% for event in events %}
 
-                            <option value="{{ event.id }}">{{ event.name }} - ₹{{ event.ticket_price }}</option>
+
+                            {% if event.ticket_price == 0 %}
+
+                            <!-- <option value="{{ event.id }}">{{ event.name }} - ₹{{ event.ticket_price }}</option> -->
+                            <option value="{{ event.id }}" data-ticket-price="{{ event.ticket_price }}">{{ event.name }}
+                            </option>
+
+
+                            {% else %}
+
+                            <option value="{{ event.id }}" data-ticket-price="{{ event.ticket_price }}">{{ event.name }}
+                                - ₹{{ event.ticket_price }}</option>
+
+                            {% endif %}
+
 
                             {% endfor %}
 
                         </select>
                     </div>
+
+
+
+                    <div class="mb-5" id="registration_category">
+                        <label for="registration_category"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Registration
+                            Type:</label>
+                        <select name="registration_category" id="registration_category"
+                            class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            required>
+                            <option selected value="Solo">Solo</option>
+                            <option value="Duo">Duo</option>
+                            <option value="Group">Group</option>
+                        </select>
+                    </div>
+
 
                     <!-- <div class="mb-5">
                         <label for="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose
@@ -167,6 +197,31 @@
     </div>
 </div>
 
+<script>
+    function toggleRegistrationType() {
+        var eventDropdown = document.getElementById("event");
+        var registrationTypeDropdown = document.getElementById("registration_category"); // Assuming "year" is the correct ID
+
+        // Get the selected event's ticket price
+        var selectedEventIndex = eventDropdown.selectedIndex;
+        var selectedEventOption = eventDropdown.options[selectedEventIndex];
+        var ticketPrice = selectedEventOption.dataset.ticketPrice;
+
+        // Toggle the visibility of the registration type dropdown based on ticket price
+        if (parseInt(ticketPrice) === 0) {
+            // If ticket price is 0, show the registration type dropdown
+            registrationTypeDropdown.style.display = "block";
+        } else {
+            // If ticket price is not 0, hide the registration type dropdown
+            registrationTypeDropdown.style.display = "none";
+        }
+    }
+
+    toggleRegistrationType();
+
+</script>
+
+
 {% if profile.qr_code %}
 
 <script>
@@ -186,6 +241,8 @@
             qrCodeSection.classList.add("hidden");
         }
     }
+
+
 </script>
 
 {% endif %}
