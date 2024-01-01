@@ -98,7 +98,7 @@ def registration(request, slug):
 
 Dear {name},
 
-CONGRATULATIONS! 🎉✨ You have successfully booked your seat in “{event}” -one of the prestigious events of GLA University.
+CONGRATULATIONS! 🎉✨ You have successfully booked your seat in “{event.name}” -one of the prestigious events of GLA University.
 You will soon get confirmation of your ticket once reviewed by the Literario Administration.📝
 
 Will keep you mailed the further updates! Have a great day.
@@ -115,7 +115,7 @@ GLA University Mathura."""
 
         email_subject = ' Confirmation To The Talk Show ❤️ '
         email_body = myfile
-        email_from = 'khandelwalprinci1@gmail.com'
+        email_from = 'Club Literario'
         email_to = [email]
 
         # Send the email

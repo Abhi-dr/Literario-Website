@@ -7,8 +7,8 @@ from django.contrib import messages
 def registerMe(request):
     
     if request.method == "POST":
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
+        first_name = request.POST.get('first_name').strip()
+        last_name = request.POST.get('last_name').strip()
         gender = request.POST.get("gender")
         mobile_number = request.POST.get('phone')
         email = request.POST.get('email')
@@ -16,6 +16,10 @@ def registerMe(request):
         year = request.POST.get('year')
         team = request.POST.get('team')
         post = request.POST.get('post')
+        
+        if Profile.objects.filter(username=username).exists():
+            messages.error(request, "Username Already Exists!")
+            return redirect('registerMe')
 
         new_user = Profile.objects.create(
             first_name = first_name,

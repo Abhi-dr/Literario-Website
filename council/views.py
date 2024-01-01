@@ -184,7 +184,7 @@ GLA University Mathura."""
 
         email_subject = ' Confirmation To The Talk Show ❤️ '
         email_body = myfile
-        email_from = 'Divyanshu Khandelwal'
+        email_from = 'Club Literario'
         email_to = [email]
 
         # Send the email

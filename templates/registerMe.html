@@ -44,15 +44,15 @@
                         {% csrf_token %}
 
                         <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="First Name" name="first_name">
+                            <input class="input--style-3" type="text" placeholder="First Name" name="first_name" required>
                         </div>
 
                         <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Last Name" name="last_name">
+                            <input class="input--style-3" type="text" placeholder="Last Name" name="last_name" required>
                         </div>
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="gender">
+                                <select name="gender" required>
                                     <option disabled="disabled" selected="selected">Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -62,16 +62,16 @@
                             </div>
                         </div>
                         <div class="input-group">
-                            <input class="input--style-3" type="email" placeholder="Email" name="email">
+                            <input class="input--style-3" type="email" placeholder="Email" name="email" required>
                         </div>
                         <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Phone" name="phone">
+                            <input class="input--style-3" type="text" placeholder="Phone" name="phone" maxlength="10" required>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="course">
+                                        <select name="course" required>
                                             <option disabled="disabled" selected="selected">COURSE</option>
                                             <option value="B.Tech">B.Tech</option>
                                             <option value="BCA">BCA</option>
@@ -88,7 +88,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="year">
+                                        <select name="year" required>
                                             <option disabled="disabled" selected="selected">YEAR</option>
                                             <option value="1st Year">1st Year</option>
                                             <option value="2nd Year">2nd Year</option>
@@ -104,7 +104,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="team">
+                                        <select name="team" required>
                                             <option disabled="disabled" selected="selected">TEAM</option>
                                             <option value="Technical Team">Technical Team</option>
                                             <option value="Event Management Team">Event Management Team</option>
@@ -124,7 +124,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="post">
+                                        <select name="post" required>
                                             <option disabled="disabled" selected="selected">POSITION</option>
                                             <option value="Member">Member</option>
                                             <option value="Deputy Head">Deputy Head</option>

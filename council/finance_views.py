@@ -31,7 +31,7 @@ def approve_registration(request, registration_id):
 
 Dear {registration.name},
 
-CONGRATULATIONS! 🎉 Your Ticket for our magnificent event – “The Talk Show” has been confirmed. We will be excitedly waiting for you to be a keen audience.🙌
+CONGRATULATIONS! 🎉 Your Ticket for our magnificent event - “{registration.event.name}” has been confirmed. We will be excitedly waiting for you to be a keen audience.🙌
 
 Stand by your mail for further updates!
 
@@ -49,7 +49,7 @@ GLA University Mathura."""
 
     email_subject = ' Confirmation To The Talk Show ❤️ '
     email_body = myfile
-    email_from = 'Divyanshu Khandelwal'
+    email_from = 'Club Literario'
     email_to = [registration.email]
 
     # Send the email
