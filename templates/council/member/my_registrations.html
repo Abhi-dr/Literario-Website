@@ -3,19 +3,16 @@
 {% block title %}Register My Friend ❤️{% endblock %}
 
 {% block content %}
-
 <div class="p-4 sm:ml-64">
     <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
 
         {% for message in messages %}
-
         <div id="alert-2"
             class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-{{ message.tags }}-50 dark:bg-gray-800 dark:text-{{ message.tags }}-400"
             role="alert">
             <div class="m-sm-5 text-sm font-medium">
                 {{ message }}
             </div>
-
             <button type="button"
                 class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-{{ message.tags }}-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-{{ message.tags }}-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-{{ message.tags }}-400 dark:hover:bg-gray-700"
                 data-dismiss-target="#alert-2" aria-label="Close">
@@ -27,21 +24,19 @@
                 </svg>
             </button>
         </div>
-
         {% endfor %}
 
         <section class="bg-white dark:bg-gray-800 rounded-lg">
             <div class="max-w-2xl px-1 py-2 mx-auto lg:py-16">
                 <h2 class="mb-4 text-2xl text-center font-bold text-gray-900 dark:text-white"
-                    style="font-size: 28px; font-family: cursive;">Event Registration</h2>
+                    style="font-size: 28px; font-family: cursive;">Registration For {{ event.name }}</h2>
 
                 <form method="post">
                     {% csrf_token %}
-
                     <div class="mb-5">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full
                             Name</label>
-                        <input type="text" name="name" id="name"
+                        <input type="text" name="name" id="name" placeholder="Full Name"
                             class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
                     </div>
@@ -62,7 +57,6 @@
                         </select>
                     </div>
 
-
                     <div class="mb-5">
                         <label for="year"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
@@ -79,9 +73,16 @@
                     <div class="mb-5">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
                             Address</label>
-                        <input type="email" name="email" id="name"
+                        <input type="email" name="email" id="name" placeholder="Tickets Will Be Shared On This Mail ID Only!"
                             class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="mobile_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mobile Number</label>
+                        <input type="text" name="mobile_number" id="mobile_number" placeholder="Mobile Number Here"
+                            class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            required maxlength="10">
                     </div>
 
                     <div class="mb-5">
@@ -96,58 +97,32 @@
                     </div>
 
 
+
                     <div class="mb-5">
                         <label for="referral" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Event
                             Name</label>
-                        <select name="event" id="event" onchange="toggleRegistrationType()"
-                            class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            required>
-
-                            {% for event in events %}
-
-
-                            {% if event.ticket_price == 0 %}
-
-                            <!-- <option value="{{ event.id }}">{{ event.name }} - ₹{{ event.ticket_price }}</option> -->
-                            <option value="{{ event.id }}" data-ticket-price="{{ event.ticket_price }}">{{ event.name }}
-                            </option>
-
-
-                            {% else %}
-
-                            <option value="{{ event.id }}" data-ticket-price="{{ event.ticket_price }}">{{ event.name }}
-                                - ₹{{ event.ticket_price }}</option>
-
-                            {% endif %}
-
-
-                            {% endfor %}
-
-                        </select>
+                        <input type="text" id="name"
+                            class="bg-gray-50 w-full border border-gray-700 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            value="{{ event.name }}" disabled>
                     </div>
 
+                    {% if not event.is_solo %}
 
-
-                    <div class="mb-5" id="registration_category">
-                        <label for="registration_category"
+                    <div class="mb-5" id="registration_type">
+                        <label for="registration_type"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Registration
-                            Type:</label>
-                        <select name="registration_category" id="registration_category"
+                            Type</label>
+                        <select name="registration_type" id="registration_type"
                             class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             required>
-                            <option selected value="Solo">Solo</option>
-                            <option value="Duo">Duo</option>
-                            <option value="Group">Group</option>
+
+                            <option value="Solo">Solo - ₹{{ event.solo_price }}</option>
+                            <option value="Duo">Duo - ₹{{ event.duo_price }}</option>
+                            <option value="Group">Group - ₹{{ event.group_price }}</option>
                         </select>
                     </div>
 
-
-                    <!-- <div class="mb-5">
-                        <label for="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose
-                            File</label>
-                        <input type="file" name="file" id="file"
-                            class="bg-gray-50 w-full border border-gray-700 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    </div> -->
+                    {% endif %}
 
                     <div class="mb-5">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Referral
@@ -157,20 +132,15 @@
                             value="{{ profile.referral_code }}" disabled>
                     </div>
 
-
                     <div class="mb-5">
-                        <label for="registration_type"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Registration
-                            Type</label>
-                        <select name="registration_type" id="registration_type"
+                        <label for="mode_of_payment"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mode Of Payment</label>
+                        <select name="mode_of_payment" id="mode_of_payment"
                             class="bg-gray-50 w-full border border-green-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-green-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             onchange="toggleQRCode()">
-                            <option value="cache">CASH</option>
-
+                            <option value="Cash">CASH</option>
                             {% if profile.qr_code %}
-
-                            <option value="online">ONLINE</option>
-
+                            <option value="Online">ONLINE</option>
                             {% endif %}
                         </select>
                     </div>
@@ -182,55 +152,27 @@
                         <img id="qr_code" src="{{ profile.qr_code.url }}" alt="QR Code"
                             class="w-full max-w-lg mx-auto mb-3">
                     </div>
-
                     {% endif %}
 
                     <button type="submit"
                         class="text-white w-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Register</button>
-
                 </form>
             </div>
         </section>
-
-
-
     </div>
 </div>
-
-<script>
-    function toggleRegistrationType() {
-        var eventDropdown = document.getElementById("event");
-        var registrationTypeDropdown = document.getElementById("registration_category"); // Assuming "year" is the correct ID
-
-        // Get the selected event's ticket price
-        var selectedEventIndex = eventDropdown.selectedIndex;
-        var selectedEventOption = eventDropdown.options[selectedEventIndex];
-        var ticketPrice = selectedEventOption.dataset.ticketPrice;
-
-        // Toggle the visibility of the registration type dropdown based on ticket price
-        if (parseInt(ticketPrice) === 0) {
-            // If ticket price is 0, show the registration type dropdown
-            registrationTypeDropdown.style.display = "block";
-        } else {
-            // If ticket price is not 0, hide the registration type dropdown
-            registrationTypeDropdown.style.display = "none";
-        }
-    }
-
-    toggleRegistrationType();
-
-</script>
 
 
 {% if profile.qr_code %}
 
 <script>
     function toggleQRCode() {
-        var registrationType = document.getElementById("registration_type").value;
+        var registrationType = document.getElementById("mode_of_payment").value;
         var qrCodeSection = document.getElementById("qr_code_section");
         var qrCodeImage = document.getElementById("qr_code");
 
-        if (registrationType === "online") {
+        if (registrationType === "Online") {
+            console.log("online seleted");
             // For simplicity, use a demo QR code image URL
             qrCodeImage.src = "{{ profile.qr_code.url }}";
 
@@ -238,10 +180,10 @@
             qrCodeSection.classList.remove("hidden");
         } else {
             // Hide the QR code section
+            console.log("cash seleted");
             qrCodeSection.classList.add("hidden");
         }
     }
-
 
 </script>
 

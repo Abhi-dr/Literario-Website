@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 # import razorpay
 # from django.conf import settings
 # from django.views.decorators.csrf import csrf_exempt
@@ -13,29 +14,43 @@ from accounts.models import Profile
 #     auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
 
 
-def registration(request):
+
+
+def select_event(request):
+    events = Event.objects.all()
     
+    parameters = {
+        'events': events
+    }
+    
+    return render(request, 'home/event_choice.html', parameters)
+
+def registration(request, slug):
+    
+    event = Event.objects.get(slug=slug)
+
     if request.method == "POST":
         name = request.POST.get('name')
         course = request.POST.get('course')
         year = request.POST.get('year')
         email = request.POST.get('email')
+        mobile_number = request.POST.get('mobile_number')
         day_host = request.POST.get('day_host')
-        event_id = request.POST.get('event')
-        event = Event.objects.get(id=event_id)
 
         referral_code = request.POST.get('referral_code')
+        registration_type = request.POST.get('registration_type')
         
         other_referral_name = request.POST.get('other_referral_name')
         
         payment_screenshot = request.FILES.get('screenshot')
+        referrance_number = request.POST.get('referrance_number')
         
         # Check if user has already registered for this event
         if Registration.objects.filter(email=email).exists():
             messages.error(request, "You have already registered for this event.")
-            return redirect('registration')
+            return redirect('registration', slug=slug)
         
-        if event.ticket_price == 0:
+        # if event.ticket_price == 0:
             
     
         new_registration = Registration(
@@ -44,7 +59,9 @@ def registration(request):
             year = year,
             email = email,
             hosteller_dayScholar = day_host,
-            event = event
+            event = event,
+            mobile_number = mobile_number,
+            referrance_number = referrance_number
         )
         
         # referral_name = Profile.objects.get(referral_code=referral_code),
@@ -60,10 +77,20 @@ def registration(request):
             
         elif referral_code == 'other':
             new_registration.other_referral_name = other_referral_name
+            
+        if registration_type == "Group":
+            new_registration.registration_type = "Group"
+        elif registration_type == "Duo":
+            new_registration.registration_type = "Duo"
+        else:
+            new_registration.registration_type = "Solo"
         
         new_registration.payment_screenshot = payment_screenshot
         
         new_registration.save()
+        
+        event.total_tickets = event.total_tickets - 1
+        event.save()
         
         # Sending Mail
         
@@ -71,7 +98,7 @@ def registration(request):
 
 Dear {name},
 
-CONGRATULATIONS! 🎉✨ You have successfully booked your seat in “Pre BLF” -one of the prestigious events of GLA University.
+CONGRATULATIONS! 🎉✨ You have successfully booked your seat in “{event}” -one of the prestigious events of GLA University.
 You will soon get confirmation of your ticket once reviewed by the Literario Administration.📝
 
 Will keep you mailed the further updates! Have a great day.
@@ -99,9 +126,8 @@ GLA University Mathura."""
         
         messages.success(request, "Welcome to the most awaited event of the year! We are glad to have you on board!".title())
        
-        return redirect('registration')
+        return redirect('registration', slug=slug)
     
-    events = Event.objects.all()
     referrals = Profile.objects.all()
     
     # currency = 'INR'
@@ -127,7 +153,7 @@ GLA University Mathura."""
     # parameters['callback_url'] = callback_url
     
     parameters = {
-        'events': events,
+        'event': event,
         'referrals': referrals,
     }
     

@@ -1,0 +1,65 @@
+{% extends "council/member/base.html" %}
+{% block title %}Welcome {{ profile.first_name }}! {% endblock %}
+
+
+{% block content %}
+
+<div class="p-4 sm:ml-64">
+
+    <h1 class="dark:text-white font-bold mt-14 text-center" style="font-family: cursive; font-size: large;">
+        Select The Event Name
+    </h1>
+
+    {% for event in events %}
+
+    {% if event.get_current_status_based_on_tickets %}
+
+    <a href="{% url 'my_registrations' event.slug %}">
+        <div
+            class="inline-block m-1 mt-14 w-full p-6 bg-white ml-auto border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {{ event.name }}</h5>
+
+            {% if event.is_solo %}
+
+            At ₹{{ event.ticket_price }} only!
+
+            {% else %}
+
+            At ₹{{ event.solo_price }}, ₹{{ event.duo_price }} and ₹{{ event.group_price }}, only!
+
+            {% endif %}
+            <br>
+            <br>
+            <h5 class="mb-2 text-xl font-bold tracking-tight text-green-600 dark:text-white">
+                Only
+                <span style="color: rgb(255, 106, 106);"> {{ event.total_tickets }}</span> Tickets Left!
+            </h5>
+        </div>
+
+    </a>
+
+    {% else %}
+
+    <div
+        class="inline-block m-1 mt-14 w-full p-6 bg-white ml-auto border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {{ event.name }}</h5>
+
+            <h5 style="color: rgb(255, 70, 70);">
+                Sorry! Tickets are Sold Out!
+            </h5>
+
+    </div>
+
+    {% endif %}
+
+
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}

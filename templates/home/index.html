@@ -5,36 +5,21 @@
 
 {% block content %}
 
-
 <!-- Hero Section Begin -->
-<section class="hero spad set-bg" data-setbg="{% static 'img/home/lit/back2.jpg' %}">
-    <div class="container mt-n5">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="hero__text">
-                    <span>Welcome to</span>
-                    <h1>Club Literario</h1>
-                    <p>The Literary Club aims at fostering a love for books and literature in students,<br /> and
-                        promoting literary activities.</p>
-                    <a href="https://www.youtube.com/watch?v=K4DyBUG242c" class="play-btn video-popup"><i
-                            class="fa fa-play"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="linear__icon">
-        <i class="fa fa-angle-double-down"></i>
-    </div>
+<section class="hero ">
+    <video autoplay muted loop style="width: 100%; left: 0;">
+        <source src="{% static 'img/home/bgvid7.mp4' %}" type="video/mp4">
+    </video>
 </section>
 <!-- Hero Section End -->
 
 <!-- Event Section Begin -->
-<section class="event spad">
+<section id="events" class="event spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Upcoming Pre-BLF Events</h2>
+                    <!-- <h2>Upcoming Pre-BLF Events</h2> -->
                 </div>
             </div>
         </div>
@@ -44,7 +29,10 @@
                     <div class="event__item">
                         <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/th.jpg' %}">
                             <div class="tag-date">
-                                <span>Soon...</span>
+                                <span>
+                                    <a style="color: white; text-decoration: none;" href="{% url 'select_event' %}">Book Tickets Now!</a>
+
+                                </span>
                             </div>
                         </div>
                         <div class="event__item__text">
@@ -57,7 +45,9 @@
                     <div class="event__item">
                         <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/talk.jpg' %}">
                             <div class="tag-date">
-                                <span>Soon...</span>
+                                <span>
+                                    <a style="color: white; text-decoration: none;" href="{% url 'select_event' %}">Book Tickets Now!</a>
+                                </span>
                             </div>
                         </div>
                         <div class="event__item__text">
@@ -70,28 +60,18 @@
                     <div class="event__item">
                         <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/india.jpg' %}">
                             <div class="tag-date">
-                                <span>Soon...</span>
+                                <span>
+                                    <a style="color: white; text-decoration: none;" href="{% url 'select_event' %}">Book Tickets Now!</a>
+                                </span>
                             </div>
                         </div>
                         <div class="event__item__text">
                             <h4>Incredible India</h4>
-                            <p><i class="fa fa-map-marker">EC Conference Hall</i></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="event__item">
-                        <div class="event__item__pic set-bg" data-setbg="{% static 'img/home/radio.jpg' %}">
-                            <div class="tag-date">
-                                <span>Soon...</span>
-                            </div>
-                        </div>
-                        <div class="event__item__text">
-                            <h4>Radio Jockey Competition</h4>
                             <p><i class="fa fa-map-marker"></i> EC Conference Hall</p>
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -103,25 +83,24 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <div class="about__pic">
-                    <img src="{% static 'img/home/about/about.png' %}" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="about__text">
-                    <div class="section-title">
-                        <h2>Our Dignitaries</h2>
-                        <h1>About me</h1>
-                    </div>
-                    <p>Discover the driving forces behind Club Literario in "Our Dignitaries". Meet our
-                        President(Mr. Priyanshu Rai), Vice-President(Miss. Aishwant Saini), and General
-                        Secratory(Miss. Sambhavi Mishra), the passionate minds shaping our literary haven. Each
-                        contributing to our vibrant literary community. Welcome to the heart of Club Literario,
-                        where words come to life.</p>
-                    <a href="#" class="primary-btn">CONTACT US!</a>
-                </div>
+                <div class="about__pic" />
+                <img id="presi" src="{% static 'img/home/lit/l9.jpeg' %}" alt="">
             </div>
         </div>
+        <div class="col-lg-6">
+            <div class="about__text">
+                <div class="section-title">
+                    <h2>Our Dignitaries</h2>
+                    <h1>Literario</h1>
+                </div>
+                <p>Discover the driving forces behind Club Literario in "Our Dignitaries". Meet our President(Mr.
+                    Priyanshu Rai), Vice-President(Miss. Aishwant Saini), and General Secratory(Miss. Sambhavi Mishra),
+                    the passionate minds shaping our literary haven. Each contributing to our vibrant literary
+                    community. Welcome to the heart of Club Literario, where words come to life.</p>
+                <a href="#" class="primary-btn">CONTACT US!</a>
+            </div>
+        </div>
+    </div>
     </div>
 </section>
 <!-- About Section End -->
@@ -140,7 +119,7 @@
                 <div class="row services__list">
                     <div class="col-lg-6 p-0 order-lg-1 col-md-6 order-md-1">
                         <div class="service__item deep-bg">
-                            <img src="{% static 'img/home/services/service-1.png' %}" alt="">
+                            <img src="{% static 'img/home/services/service-1.png" alt="">
                             <h4>Literary Exploration</h4>
                             <p>Foster a love for literature by providing a platform for members to explore diverse
                                 genres, authors, and literary works.</p>
@@ -148,15 +127,15 @@
                     </div>
                     <div class="col-lg-6 p-0 order-lg-2 col-md-6 order-md-2">
                         <div class="service__item">
-                            <img src="{% static 'img/home/services/service-2.png' %}" alt="">
+                            <img src="{% static 'img/home/services/service-2.png" alt="">
                             <h4>Collaborations</h4>
-                            <p>Build a supportive and inclusive community where members can connect over their
-                                shared passion for literature.</p>
+                            <p>Build a supportive and inclusive community where members can connect over their shared
+                                passion for literature.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 p-0 order-lg-4 col-md-6 order-md-4">
                         <div class="service__item deep-bg">
-                            <img src="{% static 'img/home/services/service-4.png' %}" alt="">
+                            <img src="{% static 'img/home/services/service-4.png" alt="">
                             <h4>Creative Expression</h4>
                             <p>Host writing workshops, open mic nights, or collaborative projects to inspire and
                                 showcase the diverse talents within the club.</p>
@@ -164,10 +143,10 @@
                     </div>
                     <div class="col-lg-6 p-0 order-lg-3 col-md-6 order-md-3">
                         <div class="service__item">
-                            <img src="{% static 'img/home/services/service-3.png' %}" alt="">
+                            <img src="{% static 'img/home/services/service-3.png" alt="">
                             <h4>Educational Initiatives</h4>
-                            <p>Provide educational opportunities related to literature, such as author talks,
-                                seminars, or visits to literary events.</p>
+                            <p>Provide educational opportunities related to literature, such as author talks, seminars.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -181,22 +160,22 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="about__pic">
-                    <img src="{% static 'img/home/lit/mentor.JPG' %}" alt="">
+                    <img id="mentor" src="{% static 'img/home/lit/mentor.jpg' %}" alt="">
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="about__text">
                     <div class="section-title">
                         <h2>Our Club Mentors</h2>
-                        <h1>About me</h1>
+                        <h1>Literario</h1>
                     </div>
-                    <p>Mrs. Mamta Bhatnagar Ma'am and Mr. Rohan Prakash Sir, distinguished mentors, illuminate the
-                        path of literary exploration within Club Literario. Mamta ma'am, with her profound knowledge
-                        and nurturing spirit, inspires members to delve into the intricacies of language and
-                        self-expression. Rohan sir, known for his dynamic approach and infectious enthusiasm,
-                        infuses the club with energy. Together, They play pivotal roles in guiding Club Literario
-                        towards a richer understanding of literature and transformative force for its members.</p>
-                    <a href="{% url 'contact' %}" class="primary-btn">CONTACT US!</a>
+                    <p>Mrs. Mamta Bhatnagar Ma'am and Mr. Rohan Prakash Sir, distinguished mentors, illuminate the path
+                        of literary exploration within Club Literario. Mamta ma'am, with her profound knowledge and
+                        nurturing spirit, inspires members to delve into the intricacies of language and
+                        self-expression. Rohan sir, known for his dynamic approach and infectious enthusiasm, infuses
+                        the club with energy. Together, They play pivotal roles in guiding Club Literario towards a
+                        richer understanding of literature and transformative force for its members.</p>
+                    <a href="#" class="primary-btn">CONTACT US!</a>
                 </div>
             </div>
         </div>
@@ -230,8 +209,8 @@
                                 data-url="music-files/1.mp3"></div>
                             <div class="jp-audio jp_container_1" role="application" aria-label="media player">
                                 <div class="jp-gui jp-interface">
-                                    <!-- Player Controls -->
-<!-- <div class="player_controls_box">
+                                    Player Controls
+                                    <div class="player_controls_box">
                                         <button class="jp-play player_button" tabindex="0"></button>
                                     </div> -->
 <!-- Progress Bar -->

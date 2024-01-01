@@ -120,9 +120,9 @@ def change_password(request):
 # ================================================= MY REGISTRATIONS ============================================
 
 @login_required(login_url='login')
-def my_registrations(request):
+def my_registrations(request, slug):
     profile = Profile.objects.get(id=request.user.id)
-    events = Event.objects.all()
+    event = Event.objects.get(slug=slug)
     
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -130,13 +130,12 @@ def my_registrations(request):
         year = request.POST.get('year')
         email = request.POST.get('email')
         day_host = request.POST.get('day_host')
-
-        
-        event = Event.objects.get(id=request.POST.get('event'))
+        registration_type = request.POST.get('registration_type')
+        mode_of_payment = request.POST.get('mode_of_payment')
         
         if Registration.objects.filter(email=email).exists():
             messages.error(request, "You have already registered for this event.")
-            return redirect('my_registrations')
+            return redirect('my_registrations', slug=slug)
     
         new_registration = Registration(
             name = name,
@@ -147,14 +146,45 @@ def my_registrations(request):
             hosteller_dayScholar = day_host,
             referral_name = profile,
             referral_code = profile.referral_code,
-            approved_by_head = True
+            approved_by_head = True,
+            mode_of_payment = mode_of_payment
         )
         
-        myfile = open(r"events\registration.txt")
+        if registration_type == "Group":
+            new_registration.registration_type = "Group"
+        elif registration_type == "Duo":
+            new_registration.registration_type = "Duo"
+        else:
+            new_registration.registration_type = "Solo"
+            
+        new_registration.save()
+        
+        event.total_tickets = event.total_tickets - 1
+        event.save()
+        
+        myfile = f"""Tickets Confirmed! Club Literario!
+
+Dear {name},
+
+CONGRATULATIONS! 🎉 Your Ticket for our magnificent event – “{ event.name }” has been confirmed. We will be excitedly waiting for you to be a keen audience.🙌
+
+Stand by your mail for further updates!
+
+For any kind of doubts or burning queries, we always welcome you;
+Mr. Divyanshu Khandelwal: 8273619318
+Mr. Priyanshu Gera: 7302068234
+
+Hope you have a great day.🌸
+
+Best wishes,
+Divyanshu Khandelwal,
+Technical Team,
+Club Literario
+GLA University Mathura."""
 
         email_subject = ' Confirmation To The Talk Show ❤️ '
-        email_body = eval(myfile.read())
-        email_from = 'khandelwalprinci1@gmail.com'
+        email_body = myfile
+        email_from = 'Divyanshu Khandelwal'
         email_to = [email]
 
         # Send the email
@@ -166,11 +196,25 @@ def my_registrations(request):
         messages.success(request, "Welcome to the most awaited event of the year! We are glad to have you on board!".title())
 
         
-        return redirect('my_registrations')
+        return redirect('my_registrations', slug=slug)
+    
+    parameters = {
+        'profile': profile,
+        'event': event
+    }
+    
+    return render(request, 'council/member/my_registrations.html', parameters)
+
+# ================================================= EVENT CHOICE ================================================
+
+@login_required(login_url='login')
+def event_choice(request):
+    profile = Profile.objects.get(id=request.user.id)
+    events = Event.objects.all()
     
     parameters = {
         'profile': profile,
         'events': events
     }
     
-    return render(request, 'council/member/my_registrations.html', parameters)
+    return render(request, 'council/member/event_choice.html', parameters)

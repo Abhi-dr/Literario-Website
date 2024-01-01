@@ -394,13 +394,18 @@ ol {
 	display: none;
 }
 
+
+#presi{
+	max-width: 90%;
+}
+#mentor{
+	max-width: 90%;
+}
 /*---------------------
   Hero
 -----------------------*/
 
 .hero {
-	padding-top: 400px;
-	padding-bottom: 295px;
 	position: relative;
 }
 
@@ -2900,6 +2905,13 @@ ol {
 	.service__item {
 		height: auto;
 		padding: 40px 40px 40px 40px;
+	}
+
+	#presi{
+		max-width: 90%;
+	}
+	#mentor{
+		max-width: 90%;
 	}
 	.skills__content {
 		height: auto;

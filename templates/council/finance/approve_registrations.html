@@ -54,16 +54,17 @@
                             Name
                         </th>
                         <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
-                            Course
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
-                            Year
+                            Course-Year
                         </th>
                         <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
                             Event
                         </th>
                         <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
-                            Day Scholar / Hosteller
+                            Payment Screenshot
+                        </th>
+                        
+                        <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
+                            UTR Number
                         </th>
                         <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
                             ACTION
@@ -84,21 +85,25 @@
                             {{ registration.name }}
                         </th>
                         <td class="px-6 py-4 text-center">
-                            {{ registration.course }}
-                        </td>
-                        <td class="px-6 py-4 text-center">
-                            {{ registration.year }}
-                        </td>
-                        <td class="px-6 py-4 text-center">
-                            {{ registration.hosteller_dayScholar }}
+                            {{ registration.course }}- {{ registration.year }}
                         </td>
                         <td class="px-6 py-4 text-center">
                             {{ registration.event }}
                         </td>
+                        <td class="px-6 py-4 text-center" style="color: rgb(200, 200, 255); text-decoration: underline;">
+                            <a href="{{ registration.payment_screenshot.url }}" target="_blank">
+                                View
+                            </a>
+                        </td>
                         <td class="px-6 py-4 text-center">
-                            <a href="{% url 'approve_registration' registration.id %}" type="button"
+                           {{ registration.referrance_number }}
+                        </td>
+                        
+                        
+                        <td class="px-6 py-4 text-center">
+                            <a href="{% url 'approve_registration' registration.id %}" type="button" onclick="confirm('Are you sure you want to approve this registration?')"
                                 class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Approve</a>
-                            <a href="{% url 'reject_registration' registration.id %}" type="button"
+                            <a href="{% url 'reject_registration' registration.id %}" type="button" 
                                 class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Reject</a>
 
                         </td>

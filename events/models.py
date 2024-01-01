@@ -9,10 +9,13 @@ class Event(models.Model):
     name = models.CharField(max_length=200)
     date = models.DateTimeField('date published')
     description = models.TextField()
+    venue = models.CharField(max_length=200, default="")
     latest_update = models.TextField(blank=True, null=True)
     total_tickets = models.IntegerField(default=0)
     thumbnail = models.ImageField(upload_to='events/thumbnails', default='events/thumbnails/default.png')
     slug = models.SlugField(max_length=200, unique=True)
+    
+    is_solo = models.BooleanField(default=False)
     
     # ================= Prices ===================
     ticket_price = models.IntegerField(default=0)
@@ -36,14 +39,15 @@ class Event(models.Model):
         
     def get_current_status_based_on_tickets(self):
         if self.total_tickets > 0:
-            return "Available"
+            return True
         else:
-            return "Sold Out"
+            return False
     
     def save(self, *args, **kwargs):
         # Automatically generate and save the slug based on the event name
         self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+        
 # ===================================== Registration ==================================
 
 class Registration(models.Model):
@@ -84,6 +88,7 @@ class Registration(models.Model):
     course = models.CharField(max_length=20, choices=COURSE_CHOICES, default='B.Tech')
     year = models.CharField(max_length=20, choices=YEAR_CHOICES, default='1st Year')
     email = models.EmailField()
+    mobile_number = models.CharField(max_length=10)
     hosteller_dayScholar = models.CharField(max_length=20, choices=D_H_CHOICES, default='Day Scholar')
     
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
@@ -102,6 +107,13 @@ class Registration(models.Model):
     approved_by_head = models.BooleanField(default=False)
     
     is_present = models.BooleanField(default=False)
+    
+    MODE_OF_PAYMENT = [
+        ("Cash", "Cash"),
+        ("Online", "Online"),
+    ]
+    
+    mode_of_payment = models.CharField(max_length=20, choices=MODE_OF_PAYMENT, null=True, blank=True)
 
     def __str__(self):
         return f"{self.name} - {self.event.name}"

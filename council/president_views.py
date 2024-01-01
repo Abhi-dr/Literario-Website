@@ -109,6 +109,8 @@ def president_events(request):
 
 # ========================================== PARTICULAR EVENT DETAILS ============================================
 
+@admin_only
+@login_required(login_url='login')
 def event_details(request, slug):
     profile = Profile.objects.get(id=request.user.id)
     event = Event.objects.get(slug=slug)

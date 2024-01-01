@@ -11,8 +11,9 @@ urlpatterns = [
     path("my_profile", views.my_profile, name='my_profile'),
     path("update_profile", views.update_profile, name='update_profile'),
     path("change_password", views.change_password, name='change_password'),
-    
-    path("my_registrations", views.my_registrations, name='my_registrations'),
+
+    path("event_choice", views.event_choice, name='event_choice'),
+    path("my_registrations/<slug:slug>", views.my_registrations, name='my_registrations'),
     
     # ============================= PRESIDENT =================================
     
