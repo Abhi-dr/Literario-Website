@@ -130,6 +130,7 @@ def my_registrations(request, slug):
         year = request.POST.get('year')
         email = request.POST.get('email')
         day_host = request.POST.get('day_host')
+        mobile_number = request.POST.get('mobile_number')
         registration_type = request.POST.get('registration_type')
         mode_of_payment = request.POST.get('mode_of_payment')
         
@@ -146,6 +147,7 @@ def my_registrations(request, slug):
             hosteller_dayScholar = day_host,
             referral_name = profile,
             referral_code = profile.referral_code,
+            mobile_number = mobile_number,
             approved_by_head = True,
             mode_of_payment = mode_of_payment
         )

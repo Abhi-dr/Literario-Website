@@ -21,7 +21,7 @@ def registerMe(request):
             messages.error(request, "Username Already Exists!")
             return redirect('registerMe')
 
-        new_user = Profile.objects.create(
+        new_user = Profile(
             first_name = first_name,
             last_name = last_name,
             gender = gender,

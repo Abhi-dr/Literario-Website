@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="p-4 sm:ml-64">
-    <h1 class="dark:text-gray-900 font-bold mt-14 text-center" style="font-family: cursive; font-size: large;">
+    <h1 class="dark:text-white font-bold mt-14 text-center" style="font-family: cursive; font-size: large;">
         Welcome To The Family ❤️
     </h1>
 </div>
@@ -62,6 +62,10 @@
                         <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
                             Payment Screenshot
                         </th>
+
+                        <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
+                            Mobile Number
+                        </th>
                         
                         <th scope="col" class="px-6 py-3 text-center text-gray-900 font-bold dark:text-white">
                             UTR Number
@@ -96,6 +100,9 @@
                             </a>
                         </td>
                         <td class="px-6 py-4 text-center">
+                            {{ registration.mobile_number }}
+                         </td>
+                        <td class="px-6 py-4 text-center">
                            {{ registration.referrance_number }}
                         </td>
                         
@@ -118,6 +125,7 @@
                 <tfoot>
                     <tr class="font-semibold text-gray-900 dark:text-white dark:bg-green-500">
                         <th scope="row" class="px-6 py-3 text-base">Total</th>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>

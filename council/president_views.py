@@ -17,11 +17,18 @@ def president(request):
     total_approved_registrations = Registration.objects.filter(approved_by_head=True).count()
     total_unapproved_registrations = Registration.objects.filter(approved_by_head=False).count()
     
-    total_money = Registration.objects.filter(approved_by_head=True)
-    total_money = total_money.aggregate(Sum('event__ticket_price'))["event__ticket_price__sum"]
+    money = Registration.objects.filter(approved_by_head=True)
     
+    # calculat the total amount of solo_price, duo_price and group_price and ticket_price
+    total_money = money.aggregate(Sum('event__ticket_price'))["event__ticket_price__sum"]
+
+
+    total_money = money.aggregate(Sum('event__solo_price'))["event__solo_price__sum"]
+    total_money += money.aggregate(Sum('event__duo_price'))["event__duo_price__sum"]
+    total_money += money.aggregate(Sum('event__group_price'))["event__group_price__sum"]
+        
     parameters = {
-        'profile': profile,
+        'profile': profile, 
         'registrations': registrations,
         'total_approved_registrations': total_approved_registrations,
         'total_unapproved_registrations': total_unapproved_registrations,
@@ -118,8 +125,14 @@ def event_details(request, slug):
     approved_registrations = Registration.objects.filter(event=event, approved_by_head=True).count()
     unapproved_registrations = Registration.objects.filter(event=event, approved_by_head=False).count()
     
-    total_money = Registration.objects.filter(event=event, approved_by_head=True)
-    total_money = total_money.aggregate(Sum('event__ticket_price'))["event__ticket_price__sum"]
+    money = Registration.objects.filter(approved_by_head=True, event=event)
+    
+    # calculat the total amount of solo_price, duo_price and group_price and ticket_price
+
+    total_money = money.aggregate(Sum('event__solo_price'))["event__solo_price__sum"]
+    total_money += money.aggregate(Sum('event__duo_price'))["event__duo_price__sum"]
+    total_money += money.aggregate(Sum('event__group_price'))["event__group_price__sum"]
+    total_money += money.aggregate(Sum('event__ticket_price'))["event__ticket_price__sum"]
     
     
     parameters = {

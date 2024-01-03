@@ -47,7 +47,7 @@ Technical Team,
 Club Literario
 GLA University Mathura."""
 
-    email_subject = ' Confirmation To The Talk Show ❤️ '
+    email_subject = f' Confirmation To {registration.event.name.title()} ❤️ '
     email_body = myfile
     email_from = 'Club Literario'
     email_to = [registration.email]
